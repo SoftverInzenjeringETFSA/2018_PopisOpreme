@@ -1,0 +1,219 @@
+body {
+
+	background-color: #071e22;
+	background-image: url("https://www.transparenttextures.com/patterns/dark-dot.png");
+}
+
+.naziv {
+
+	text-align: center;
+	font-size: 30pt;
+	color: #D5BF86;
+}
+
+.podstranice{
+
+	font-size: 12pt;
+	color: #F1F0CC;
+	padding: 50px;
+}
+
+.menu {
+
+	list-style-type: none;
+	overflow: hidden;
+	background-color: #1D7864;
+	font-size: 12pt;
+	margin: 0px;
+	padding: 0px;
+}
+
+.nav{
+
+	display: inline-block;
+	width: 100%
+}
+
+.menu li {
+
+	float: left;
+	color: #3F0D12;
+	text-align: center;
+	padding: 15px 30px;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.okvir {
+
+	max-width: 1000px;
+	margin: auto;
+}
+
+.okvir_formi{
+
+	margin: auto;
+	display: grid;
+	width: 100%;
+	grid-row-gap: 20px;
+}
+
+.forma {
+
+	background-color: #1D7864;
+	border: 5px solid #F1F0CC;
+	display: block;
+}
+
+.form, .lista {
+
+	display: grid;
+	padding: 50px;
+	grid-row-gap: 15px;
+	grid-column-gap: 5px;
+}
+
+.pretraga {
+
+	display: flex;
+	width: 100%;
+}
+
+.tabela {
+
+	overflow-x: auto;
+}
+
+input, select {
+
+	padding: 3px;
+	font-size: 12pt;
+	border: none;
+	background-color: #F1F0CC;
+	font-family: sans-serif;
+}
+
+label, h1{
+
+	font-size: 12pt;
+	color: #3F0D12;
+	font-family: sans-serif;
+}
+
+h1 {
+
+	font-size: 25pt;
+	text-align: center;
+
+}
+
+button {
+
+	margin-top: 15px;
+	border: 2px solid #F1F0CC;
+	background-color: #3F0D12;
+	font-size: 12pt;
+	font-weight: bold;
+	color: #F1F0CC;
+	padding: 7px 5px;
+	font-family: sans-serif;
+}
+
+table, tr, td, th{
+
+	width: auto;
+	font-size: 12pt;
+	font-family: sans-serif;
+	background-color: #F1F0CC;
+	color: #3F0D12;
+	padding: 5px;
+}
+
+table {
+
+	box-sizing: border-box;
+	border-collapse:collapse;
+	width: 100%;
+}
+
+tr {
+
+	border:none;
+}
+
+th, td {
+
+	text-align: center;
+	border-collapse:collapse;
+	border: 2px solid #071e22;
+}
+
+th {
+
+	background-color: #3F0D12;
+	color: #F1F0CC;
+}
+
+#sfield, .sfield {
+
+	float: left;
+	width: 75%;
+}
+
+#search, .search {
+
+	float: right;
+	width: 25%;
+	margin: auto;
+}
+
+.box {
+
+	width: 20px;
+	height: 20px;
+}
+
+.link {
+
+	text-decoration: underline;
+	width: 100%;
+	text-align: center;
+	font-size: 15pt;
+	color: #3F0D12;
+	margin-bottom: 25px;
+}
+
+@media(max-width: 700px) {
+
+	.podstranice {
+
+		padding: 0px;
+	}
+
+	.okvir {
+
+		width: 100%;
+		max-width: none;
+		overflow: hidden;
+	}
+
+	.forma {
+
+		background-color: #1D7864;
+		border: 5px solid #F1F0CC;
+		display: block;
+	}
+
+	.form, .lista {
+
+		width: 100%;
+		display: grid;
+		padding: 25px;
+	}
+
+	.form {
+
+		width: 100%;
+		box-sizing: border-box;
+	}
+}
