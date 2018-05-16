@@ -15,6 +15,16 @@ const Navbar = () => {
                             Home Page
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/unosProstorije">
+                            Unos prostorije
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/brisanjeProstorije">
+                            Brisanje prostorije
+                        </Link>
+                    </li>
                 </ul>
         </nav>
     );

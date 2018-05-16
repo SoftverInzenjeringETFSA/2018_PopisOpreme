@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4c5ee58-d48d-4b21-8e4e-4ca76c7aaea3" name="Default" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" />
@@ -18,6 +19,29 @@
       <change beforePath="$PROJECT_DIR$/backend/prostorije.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/registerlogin.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/.vs/VSWorkspaceState.json" beforeDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Haris.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/prostorije.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.vs/VSWorkspaceState.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.vs/frontend/v15/.suo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.vs/slnx.sqlite" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/prostorija/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/si2018.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/si2018.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/login/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/navbar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/navbar/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/routers/EntryRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/routers/EntryRouter.js" afterDir="false" />
+>>>>>>> haris
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -40,7 +64,11 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+=======
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+>>>>>>> haris
         <entry file="file://$PROJECT_DIR$/frontend/src/components/login/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="81">
@@ -52,6 +80,18 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+=======
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/backend/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+>>>>>>> haris
       <file leaf-file-name="EntryRouter.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/src/components/routers/EntryRouter.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -64,6 +104,18 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+=======
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/config/config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+>>>>>>> haris
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/src/components/navbar/index.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -78,6 +130,16 @@
       </file>
     </leaf>
   </component>
+<<<<<<< HEAD
+=======
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+>>>>>>> haris
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -98,6 +160,15 @@
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+<<<<<<< HEAD
+=======
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+>>>>>>> haris
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
@@ -107,9 +178,21 @@
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
+<<<<<<< HEAD
       <path value="$PROJECT_DIR$/frontend/package.json" />
     </packageJsonPaths>
   </component>
+=======
+      <path value="$PROJECT_DIR$/backend/package.json" />
+      <path value="$PROJECT_DIR$/frontend/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
+  </component>
+>>>>>>> haris
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -125,6 +208,14 @@
             <path>
               <item name="si2018" type="b2602c69:ProjectViewProjectNode" />
               <item name="si2018" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+=======
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="si2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="si2018" type="462c0819:PsiDirectoryNode" />
+>>>>>>> haris
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -163,6 +254,17 @@
       <pane id="Scope" />
     </panes>
   </component>
+<<<<<<< HEAD
+=======
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="package&#9;FILE&#9;file://C:/Users/Haris/Desktop/SI projekat/si2018/frontend/package.json&#10;container&#9;null&#9;null" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.0.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../flstck react lrn/voting_app" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+  </component>
+>>>>>>> haris
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -189,15 +291,36 @@
       <workItem from="1526087603240" duration="123000" />
       <workItem from="1526288286344" duration="1497000" />
       <workItem from="1526297065149" duration="4971000" />
+<<<<<<< HEAD
       <workItem from="1526506055340" duration="2260000" />
+=======
+      <workItem from="1526506055340" duration="1767000" />
+>>>>>>> haris
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="20357000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+=======
+    <option name="totallyTimeSpent" value="19864000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+>>>>>>> haris
     <layout>
       <window_info anchor="bottom" id="TODO" order="11" weight="0.32890365" />
       <window_info id="DB Browser" order="1" weight="0.152" />
@@ -604,6 +727,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/backend/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -611,6 +735,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> haris
     <entry file="file://$PROJECT_DIR$/frontend/src/components/login/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
@@ -621,5 +747,15 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/backend/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> haris
   </component>
 </project>
