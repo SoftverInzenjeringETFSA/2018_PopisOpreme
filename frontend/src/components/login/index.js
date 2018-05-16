@@ -1,5 +1,5 @@
 import React from 'react';
-import { loginUser} from "./actions";
+import {loginUser} from "./actions";
 
 class Login extends React.Component {
     constructor(props){
@@ -35,12 +35,12 @@ class Login extends React.Component {
                         <form className="well" onSubmit={e => e.preventDefault()}>
                             <div className="form-group">
                                 <label>Username</label>
-                                <input className="form-control" name="username" onChange={this.onChange} />
+                                <input className="form-control" name="username" onChange={this.onChange}/>
                             </div>
 
                             <div className="form-group">
                                 <label>Password</label>
-                                <input className="form-control" name="password" onChange={this.onChange} />
+                                <input className="form-control" name="password" onChange={this.onChange}/>
                             </div>
 
                             <button className="btn btn-primary" onClick={this.onLoginClick}>
