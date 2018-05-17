@@ -3,9 +3,11 @@ const
 
 // ROUTES
 const 
-        authRoutes = require('./controllers/auth/auth');
+        authRoutes = require('./controllers/auth/auth'),
+        prostorijeRoutes = require('./controllers/prostorije');
 
 app.use(authRoutes);
+app.use(prostorijeRoutes);
 
 app.get('/', (req, res) => {
     res.send('It works.')
