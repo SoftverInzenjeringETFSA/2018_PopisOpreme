@@ -6,6 +6,9 @@ const
         authRoutes = require('./controllers/auth/auth'),
         prostorijeRoutes = require('./controllers/prostorije');
 
+const categoryRoutes = require('./controllers/categories');
+app.use('/categories', categoryRoutes);
+
 app.use(authRoutes);
 app.use(prostorijeRoutes);
 
