@@ -8,6 +8,8 @@ import {UnosProstorije, BrisanjeProstorije} from '../prostorija';
 import NovaInventura from '../novaInventura';
 import Inventura from '../inventura';
 
+import Category from '../categories';
+
 const EntryRouter = () => {
     return (
         <Router>
@@ -20,6 +22,7 @@ const EntryRouter = () => {
                     <Route exact path='/brisanjeProstorije' component={BrisanjeProstorije}/>
                     <Route exact path='/novaInventura' component={NovaInventura}/>
                     <Route exact path='/inventura' component={Inventura}/>
+                    <Route exact path='/categories' component={Category}/>
                     <Route path='*' component={NotFound}/>
                 </Switch>
             </div>

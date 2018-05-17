@@ -22,7 +22,7 @@ router.post('/', validate, (req, res) => {
 });
 
 router.get('/:id?', (req, res) => {
-    let categoryId = req.values.id;
+    let categoryId = req.query.id;
     if(categoryId){
         Category.findById(categoryId, (err, data) => {
             if(err){
@@ -50,7 +50,7 @@ router.get('/:id?', (req, res) => {
 });
 
 router.patch('/:id', validate, (req, res) => {
-    let categoryId = req.values.id;
+    let categoryId = req.query.id;
     let values = req.body;
     Category.updateOne({
         _id: categoryId
@@ -69,8 +69,8 @@ router.patch('/:id', validate, (req, res) => {
     });
 });
 
-router.delete('/id', (req, res) => {
-    let categoryId = req.values.id;
+router.delete('/:id', (req, res) => {
+    let categoryId = req.query.id;
     Category.deleteOne({
         _id: categoryId
     }, (err) => {
