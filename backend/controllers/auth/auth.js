@@ -37,5 +37,20 @@ router.get('/test', (req, res) => {
             res.send(data);
         }
     })
-})
+});
+
+router.post('/novaInventura', (req, res) => {
+    Inventura.create({
+        naziv: req.body.naziv,
+        prostorija: req.body.prostorija
+    }, (err, data) => {
+        if(err) {
+            console.log(err);
+        }
+        else {
+            console.log(data);
+            res.send(data);
+        }
+    })
+});
 module.exports = router;

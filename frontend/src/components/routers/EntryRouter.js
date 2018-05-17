@@ -5,6 +5,8 @@ import Home from '../home';
 import Navbar from '../navbar';
 import NotFound from '../404';
 import {UnosProstorije, BrisanjeProstorije} from '../prostorija';
+import NovaInventura from '../novaInventura';
+import Inventura from '../inventura';
 
 const EntryRouter = () => {
     return (
@@ -16,6 +18,8 @@ const EntryRouter = () => {
                     <Route exact path='/home' component={Home}/>
                     <Route exact path='/unosProstorije' component={UnosProstorije}/>
                     <Route exact path='/brisanjeProstorije' component={BrisanjeProstorije}/>
+                    <Route exact path='/novaInventura' component={NovaInventura}/>
+                    <Route exact path='/inventura' component={Inventura}/>
                     <Route path='*' component={NotFound}/>
                 </Switch>
             </div>
