@@ -29,6 +29,7 @@ const EntryRouter = () => {
                     <Route exact path='/novaInventura' component={NovaInventura}/>
                     <Route exact path='/inventura' component={Inventura}/>
                     <Route exact path='/categories' component={Category}/>
+                    <Route exact path='/pregledKorisnika' component={PregledKorisnika} />
                     <Route exact path='/categories/add' component={AddCategory}/>
                     <Route path='*' component={NotFound}/>
                 </Switch>
