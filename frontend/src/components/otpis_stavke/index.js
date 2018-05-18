@@ -25,7 +25,18 @@ class OtpisInventurneStavke extends React.Component {
     }
 
     dobaviStavke() {
-        fetch('/backend/controllers/stavke')//ne treba ovolika ruta al da ne bude konflikta kasnije.. moze i /stavke al ce vjerovatno neko kasnije koristit to
+
+        var myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+    
+        const options = {
+            method: 'GET',
+            headers: myHeaders
+        }
+    
+        var request = new Request('http://localhost:8080/get-stavke', options);
+
+        fetch(request)
           .then(res => res.json())
           .then(json => {
             this.setState({
@@ -50,11 +61,21 @@ class OtpisInventurneStavke extends React.Component {
 
         alert('Stavka '+stavka +' Obrisana');
         //obrisati iz baze
-        /*
-                this.setState({
-                    message:'Stavka +'
-                })
-        */
+        let id=1;
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+    
+        const options = {
+            method: 'DELETE',
+            headers: myHeaders
+        }
+    
+        var request = new Request('http://localhost:8080/delete-stavke/' + id, options);
+    
+        fetch(request)
+        .then(res => {
+            console.log(res);
+        });
      
     }
 
@@ -63,6 +84,7 @@ class OtpisInventurneStavke extends React.Component {
         this.setState(prevState=>({
             listaStavki:[...prevState.listaStavki,'Adnan']
         }));*/
+        this.dobaviStavke();
         const {listaStavki} = this.state;
         const {stavke_izvjestaj} = this.state;
         /*
