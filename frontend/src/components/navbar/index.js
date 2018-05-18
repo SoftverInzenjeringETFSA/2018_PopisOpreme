@@ -40,6 +40,16 @@ const Navbar = () => {
                             Dodavanje Inventurne Stavke
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/novaInventura">
+                            Nova inventura
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/inventura">
+                            Inventura
+                        </Link>
+                    </li>
                 </ul>
         </nav>
     );
