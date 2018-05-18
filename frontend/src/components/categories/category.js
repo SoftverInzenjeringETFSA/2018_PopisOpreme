@@ -39,6 +39,7 @@ class Container extends React.Component {
                     });
                 }
                 else{
+                    console.log(res);
                     res.json().then(json => {
                         console.log(json);
                         this.setState({

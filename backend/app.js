@@ -1,8 +1,15 @@
-const   
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+
+const
         app = require('express')(),
         cors = require('cors');
 
 app.use(cors());
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 // ROUTES
 const 
         authRoutes = require('./controllers/auth/auth'),
