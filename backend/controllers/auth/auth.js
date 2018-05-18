@@ -27,10 +27,12 @@ router.get('/test', (req, res) => {
     User.create({
         username: 'test',
         firstname: 'test',
-        lastname: 'test'
+        lastname: 'test',
+        email:'test@gmail.com'
     }, (err, data) => {
         if(err) {
             console.log(err);
+            res.end();
         }
         else {
             console.log(data);

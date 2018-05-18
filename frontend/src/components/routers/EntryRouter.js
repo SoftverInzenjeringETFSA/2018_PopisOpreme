@@ -7,6 +7,7 @@ import NotFound from '../404';
 import {UnosProstorije, BrisanjeProstorije} from '../prostorija';
 import NovaInventura from '../novaInventura';
 import Inventura from '../inventura';
+import PregledKorisnika from '../pregledKorisnika';
 
 import Category from '../categories';
 
@@ -23,6 +24,7 @@ const EntryRouter = () => {
                     <Route exact path='/novaInventura' component={NovaInventura}/>
                     <Route exact path='/inventura' component={Inventura}/>
                     <Route exact path='/categories' component={Category}/>
+                    <Route exact path='/pregledKorisnika' component={PregledKorisnika} />
                     <Route path='*' component={NotFound}/>
                 </Switch>
             </div>
