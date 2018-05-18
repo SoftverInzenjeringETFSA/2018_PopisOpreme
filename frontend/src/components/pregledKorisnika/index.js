@@ -6,32 +6,13 @@ import './styles.css';
 class Akcije extends React.Component {
     constructor(props) {
         super(props);
-
-        this.deleteUser = this.deleteUser.bind(this);
-    }
-
-    deleteUser(id) {
-        var myHeaders = new Headers();
-        myHeaders.append('Content-Type', 'application/json');
-    
-        const options = {
-            method: 'DELETE',
-            headers: myHeaders
-        }
-    
-        var request = new Request('http://localhost:8080/users/' + id, options);
-    
-        fetch(request)
-        .then(res => {
-            console.log(res);
-        });
     }
 
     render() {
         return (
             <div>
                 <button className="btn btn-sm btn-warning" style={{marginRight:4}}>Edit</button>
-                <button className="btn btn-sm btn-danger" onClick={() => this.deleteUser(this.props.id)}>Delete</button>
+                <button className="btn btn-sm btn-danger" onClick={() => this.props.onClick(this.props.id)}>Obrisi</button>
             </div>
         );
     }
@@ -52,7 +33,7 @@ class Korisnik extends React.Component {
                 <td className="text-center">{item.username}</td>
                 <td className="text-center">{item.email}</td>
                 <td className="text-center">{item.role}</td>
-                <td className="text-center"><Akcije id={item._id} /></td>
+                <td className="text-center"><Akcije id={item._id} onClick={this.props.onClick}/></td>
             </tr>
         })
     }
@@ -65,6 +46,8 @@ class PregledKorisnika extends React.Component {
         this.state = {
             users: []
         }
+        this.getUsers = this.getUsers.bind(this);
+        this.deleteUser = this.deleteUser.bind(this);
         this.getUsers();
     }
     getUsers() {
@@ -83,6 +66,24 @@ class PregledKorisnika extends React.Component {
             this.setState({
                 users: res
             });
+        });
+    }
+    deleteUser(id) {
+        var self = this;
+        var myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+    
+        const options = {
+            method: 'DELETE',
+            headers: myHeaders
+        }
+    
+        var request = new Request('http://localhost:8080/users/' + id, options);
+    
+        fetch(request)
+        .then(res => {
+            alert('Korisnik uspjesno obrisan');
+            this.getUsers();
         });
     }
     render() {
@@ -119,7 +120,7 @@ class PregledKorisnika extends React.Component {
                     </thead>
 
                     <tbody>
-                        <Korisnik users={this.state.users}/>
+                        <Korisnik users={this.state.users} onClick={this.deleteUser}/>
                     </tbody>
                 </table>
             </div>
