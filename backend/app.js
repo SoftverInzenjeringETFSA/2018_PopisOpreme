@@ -6,7 +6,9 @@ app.use(cors());
 // ROUTES
 const 
         authRoutes = require('./controllers/auth/auth'),
-        prostorijeRoutes = require('./controllers/prostorije/prostorije');
+        prostorijeRoutes = require('./controllers/prostorije/prostorije'),
+        usersRoutes = require('./controllers/users'),
+        roleRoutes = require('./controllers/roles');
 
 const categoryRoutes = require('./controllers/categories');
 app.use('/categories', categoryRoutes);
