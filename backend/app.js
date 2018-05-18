@@ -15,7 +15,7 @@ app.use(cookieParser());
 // ROUTES
 const 
         authRoutes = require('./controllers/auth/auth'),
-        prostorijeRoutes = require('./controllers/prostorije');
+        prostorijeRoutes = require('./controllers/prostorije/prostorije');
 
 const categoryRoutes = require('./controllers/categories');
 app.use('/categories', categoryRoutes);
