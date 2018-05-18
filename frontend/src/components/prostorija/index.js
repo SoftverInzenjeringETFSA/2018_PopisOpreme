@@ -35,27 +35,50 @@ class UnosProstorije extends React.Component
     {
         super(props);
         this.state = {
-            name: '',
-            parentRoom: this.props.rooms,
+            roomName: '',
+            parentRoomName: '',
         };
-        this.onChange = this.onChange.bind(this);
-
+        this.onChangeRoomName = this.onChangeRoomName.bind(this);
+        this.onChangeParentRoomName = this.onChangeParentRoomName.bind(this);
+        this.onAddRoom = this.onAddRoom.bind(this);
     }
 
-    onAddRoom(e)
+    onAddRoom()
     {
+        console.log('test');
+        var data = {
+            roomName: this.state.roomName,
+            parentRoomName: this.state.parentRoomName
+        };
 
-        alert('Succes');
-        /* Upisati u bazu prostoriju */
+        console.log(data);
+
+        var myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+
+        const options = {
+            method: 'POST',
+            headers: myHeaders,
+            body: JSON.stringify(data)
+        };
+
+        var myRequest = new Request('http://localhost:8080/addRoom', options);
+        const response = fetch(myRequest);
     }
 
-    onChange(e)
+    onChangeRoomName(e)
     {
         this.setState({
-            name: e.target.value
+            roomName: e.target.value
         });
     }
 
+    onChangeParentRoomName(e)
+    {
+        this.setState({
+            parentRoomName: e.target.value,
+        });
+    }
     render()
     {
         return (
@@ -66,16 +89,12 @@ class UnosProstorije extends React.Component
                             <div className="form-group">
                                 <label>Naziv prostorije</label>
                                 <input className="form-control" name="roomName" placeholder={'Naziv'}
-                                       onChange={this.onChange}/>
+                                       onChange={this.onChangeRoomName}/>
                             </div>
                             <div className="form-group">
-                                <label>Izbor parent prostorije (opcionalno)</label>
-                                <select className="form-control" name={'chooseParentRoom'}>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
+                                <label>Parent prostorija (opcionalno)</label>
+                                <input className="form-control" name="parentRoomName" placeholder={'Naziv parent prostorije'}
+                                       onChange={this.onChangeParentRoomName}/>
                             </div>
                             <button className="btn btn-default" type="submit" onClick={this.onAddRoom}>
                                 Dodaj prostoriju

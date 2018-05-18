@@ -9,8 +9,13 @@ router.use(bodyParser.urlencoded({ extended: true }));
 // router.use(cors());
 
 // WebStorm ima problem sa prepoznavanjem modula, pa sam ovo uradio da zaobidjem problem. (var Room;)
+<<<<<<< Updated upstream
 //var Room;
  const Room = require('../../models/Room');
+=======
+// var Room;
+const Room = require('../models/User');
+>>>>>>> Stashed changes
 
 router.post('/addRoom', function (req, res)
 {
@@ -40,4 +45,8 @@ router.post('/deleteRoom', function (req, res)
     res.send('OK remove');
 });
 
+<<<<<<< Updated upstream
+=======
+// Room = require('../models/Room');
+>>>>>>> Stashed changes
 module.exports = router;
