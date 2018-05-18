@@ -5,8 +5,11 @@ import Home from '../home';
 import Navbar from '../navbar';
 import NotFound from '../404';
 import {UnosProstorije, BrisanjeProstorije} from '../prostorija';
+import GenerisanjeNaljepnica from '../generisanje_naljepnica';
+import OtpisInventurneStavke from '../otpis_stavke';
 import NovaInventura from '../novaInventura';
 import Inventura from '../inventura';
+import PregledKorisnika from '../pregledKorisnika';
 
 import Category from '../categories';
 import AddCategory from '../categories/category';
@@ -21,6 +24,8 @@ const EntryRouter = () => {
                     <Route exact path='/home' component={Home}/>
                     <Route exact path='/unosProstorije' component={UnosProstorije}/>
                     <Route exact path='/brisanjeProstorije' component={BrisanjeProstorije}/>
+                    <Route exact path='/generisanjenaljepnica' component ={GenerisanjeNaljepnica} />
+                    <Route exact path='/otpisinventurnestavke' component ={OtpisInventurneStavke} />
                     <Route exact path='/novaInventura' component={NovaInventura}/>
                     <Route exact path='/inventura' component={Inventura}/>
                     <Route exact path='/categories' component={Category}/>
