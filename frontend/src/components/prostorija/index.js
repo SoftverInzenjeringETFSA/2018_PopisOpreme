@@ -72,6 +72,7 @@ class UnosProstorije extends React.Component
 
             var myRequest = new Request('http://localhost:8080/addRoom', options);
             const response = fetch(myRequest);
+            alert('Uspjesno dodana prostorija');
         }
     }
 
