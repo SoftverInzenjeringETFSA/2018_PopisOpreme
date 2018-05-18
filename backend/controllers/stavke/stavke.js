@@ -5,7 +5,7 @@ const router = express.Router();
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
-router.get('/get-stavke',(req, res, next) => {
+router.get('/',(req, res, next) => {
         Stavka.find({}, (err, data) => {
             if(err){
                 res.status(500).json({

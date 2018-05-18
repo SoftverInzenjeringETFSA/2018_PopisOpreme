@@ -21,7 +21,9 @@ class OtpisInventurneStavke extends React.Component {
             stavke_izvjestaj: []
         }
 
-       
+        this.dobaviStavke = this.dobaviStavke.bind(this);
+        this.ObrisiInventurnuStavku = this.ObrisiInventurnuStavku.bind(this);
+        this.dobaviStavke();
     }
 
     dobaviStavke() {
@@ -84,7 +86,7 @@ class OtpisInventurneStavke extends React.Component {
         this.setState(prevState=>({
             listaStavki:[...prevState.listaStavki,'Adnan']
         }));*/
-        this.dobaviStavke();
+       //this.dobaviStavke();
         const {listaStavki} = this.state;
         const {stavke_izvjestaj} = this.state;
         /*
