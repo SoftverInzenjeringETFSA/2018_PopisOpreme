@@ -13,6 +13,7 @@ import Inventura from '../inventura';
 import PregledKorisnika from '../pregledKorisnika';
 
 import Category from '../categories';
+import AddCategory from '../categories/category';
 
 const EntryRouter = () => {
     return (
@@ -30,6 +31,7 @@ const EntryRouter = () => {
                     <Route exact path='/inventura' component={Inventura}/>
                     <Route exact path='/categories' component={Category}/>
                     <Route exact path='/pregledKorisnika' component={PregledKorisnika} />
+                    <Route exact path='/categories/add' component={AddCategory}/>
                     <Route path='*' component={NotFound}/>
                 </Switch>
             </div>

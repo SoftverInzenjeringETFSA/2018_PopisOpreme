@@ -1,5 +1,4 @@
 import React from 'react';
-import {fetchCategories} from "./actions";
 
 class Container extends React.Component {
     constructor(props) {
@@ -33,7 +32,7 @@ class Container extends React.Component {
         if(this.state.categories) {
             this.state.categories.forEach(cat => {
                 catUI.push(
-                    <p>{cat.name}</p>
+                    <p key={cat._id}>{'Name: ' + cat.name}</p>
                 );
             });
         }

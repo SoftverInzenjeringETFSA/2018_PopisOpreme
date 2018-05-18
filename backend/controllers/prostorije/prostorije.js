@@ -9,8 +9,9 @@ router.use(bodyParser.urlencoded({ extended: true }));
 // router.use(cors());
 
 // WebStorm ima problem sa prepoznavanjem modula, pa sam ovo uradio da zaobidjem problem. (var Room;)
-var Room;
-// const Room = require('../models/User');
+
+// var Room;
+const Room = require('../../models/Room');
 
 router.post('/addRoom', function (req, res)
 {
@@ -40,5 +41,6 @@ router.post('/deleteRoom', function (req, res)
     res.send('OK remove');
 });
 
-Room = require('../models/Room');
+
+// Room = require('../models/Room');
 module.exports = router;
