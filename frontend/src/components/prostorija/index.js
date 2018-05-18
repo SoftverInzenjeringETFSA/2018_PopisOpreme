@@ -45,25 +45,34 @@ class UnosProstorije extends React.Component
 
     onAddRoom()
     {
-        console.log('test');
+
         var data = {
             roomName: this.state.roomName,
             parentRoomName: this.state.parentRoomName
         };
 
-        console.log(data);
+        var regex = new RegExp('^[a-zA-Z0-9|/|(|)|-]+$');
 
-        var myHeaders = new Headers();
-        myHeaders.append('Content-Type', 'application/json');
+        if (!regex.test(data.roomName))
+        {
+            alert('Naziv prostorije nije validan!');
+        }
+        else
+        {
+            console.log(data);
 
-        const options = {
-            method: 'POST',
-            headers: myHeaders,
-            body: JSON.stringify(data)
-        };
+            var myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'application/json');
 
-        var myRequest = new Request('http://localhost:8080/addRoom', options);
-        const response = fetch(myRequest);
+            const options = {
+                method: 'POST',
+                headers: myHeaders,
+                body: JSON.stringify(data)
+            };
+
+            var myRequest = new Request('http://localhost:8080/addRoom', options);
+            const response = fetch(myRequest);
+        }
     }
 
     onChangeRoomName(e)
@@ -79,10 +88,14 @@ class UnosProstorije extends React.Component
             parentRoomName: e.target.value,
         });
     }
+
     render()
     {
         return (
             <div className={'container'}>
+                <header>
+                    <h2 className="text-center">Dodavanje prostorije</h2>
+                </header>
                 <div className="row">
                     <div className="col-lg-offset-4 col-lg-4">
                         <form className={'well well-lg'}>
@@ -93,7 +106,8 @@ class UnosProstorije extends React.Component
                             </div>
                             <div className="form-group">
                                 <label>Parent prostorija (opcionalno)</label>
-                                <input className="form-control" name="parentRoomName" placeholder={'Naziv parent prostorije'}
+                                <input className="form-control" name="parentRoomName"
+                                       placeholder={'Naziv parent prostorije'}
                                        onChange={this.onChangeParentRoomName}/>
                             </div>
                             <button className="btn btn-default" type="submit" onClick={this.onAddRoom}>
