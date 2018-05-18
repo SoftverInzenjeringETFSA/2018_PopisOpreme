@@ -5,17 +5,11 @@ import Home from '../home';
 import Navbar from '../navbar';
 import NotFound from '../404';
 import {UnosProstorije, BrisanjeProstorije} from '../prostorija';
-<<<<<<< HEAD
-import GenerisanjeNaljepnica from '../generisanje_naljepnica';
-import OtpisInventurneStavke from '../otpis_stavke';
-
-=======
 import NovaInventura from '../novaInventura';
 import Inventura from '../inventura';
 import PregledKorisnika from '../pregledKorisnika';
 
 import Category from '../categories';
->>>>>>> e6c48cfbcc55122886ee79ef42afacb937577ac5
 
 const EntryRouter = () => {
     return (
