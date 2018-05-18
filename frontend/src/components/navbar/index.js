@@ -25,6 +25,16 @@ const Navbar = () => {
                             Brisanje prostorije
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/generisanjenaljepnica">
+                            Generisanje Naljepnica
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/otpisinventurnestavke">
+                            Brisanje Inventurne Stavke
+                        </Link>
+                    </li>
                 </ul>
         </nav>
     );
