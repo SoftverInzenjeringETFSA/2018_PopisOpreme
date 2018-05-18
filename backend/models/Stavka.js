@@ -5,7 +5,6 @@ var stavkaSchema = mongoose.Schema({
     id_broj : String,
     ispravnost : String,
     kategorija : String,
-    key : Number,
     kolicina : String,
     naziv : String,
     prisutnost : String
