@@ -1,11 +1,12 @@
 const Stavka = require('../../models/Stavka');
 const express = require('express');
+const bodyParser = require('body-parser');
 const router = express.Router();
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
-router.get('/',(req, res, next) => {
+router.get('/get-stavke',(req, res) => {
         Stavka.find({}, (err, data) => {
             if(err){
                 res.status(500).json({
@@ -18,7 +19,7 @@ router.get('/',(req, res, next) => {
         });
    });
 
-router.post('/delete-stavku:id',function(req,res,next){
+router.post('/delete-stavku:id',function(req,res){
 
     let id =req.body.id;
     Stavka.findByIdAndRemove(id).exec();
@@ -26,21 +27,14 @@ router.post('/delete-stavku:id',function(req,res,next){
 });
 router.post('/dodajstavku', function (req, res)
 {
-    var datum = new Date(); // za idBroj
-    datum = req.body._datum.valueAsDate;
-    var dan = datum.getDay();
-    var mjesec = datum.getMonth();
-    var godina = datum.getFullYear();
-    const min = 1;
-    const max = 99999;
-    const rand = min + Math.random() * (max - min); // za idBroj
-
-    var naziv = req.body._naziv;
-    var kolicina = req.body._kolicina;
-    var kategorija = req.body._kategorija;
-    var ispravnost = req.body._ispravnost;
-    var prisutnost = req.body._prisutnost;
-    var idBroj = parseInt(dan.toString() + mjesec.toString() + godina.toString() + req.body._kategorija.value.toString() + rand.toString())
+    
+  
+    var naziv = req.body.naziv;
+    var kolicina = req.body.kolicina;
+    var kategorija = req.body.kategorija;
+    var ispravnost = req.body.ispravnost;
+    var prisutnost = req.body.prisutnost;
+    var idBroj = req.body.idBroj;
 
     Stavka.create({
         id_broj : idBroj,

@@ -17,10 +17,12 @@ const
         usersRoutes = require('./controllers/users'),
         roleRoutes = require('./controllers/roles'),
         auditRoutes = require('./controllers/audit/audit');
+        stavke = require('./controllers/stavke/stavke')
 
 const categoryRoutes = require('./controllers/categories');
 app.use('/categories', categoryRoutes);
 
+app.use(stavke);
 app.use(authRoutes);
 app.use(auditRoutes);
 app.use(prostorijeRoutes);

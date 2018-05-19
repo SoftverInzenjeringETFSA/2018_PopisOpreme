@@ -21,7 +21,7 @@ class Item extends React.Component {
    
    addItem(e)
    {
-
+      
        var datum = new Date(); // za idBroj
        datum = this._datum.valueAsDate;
        var dan = datum.getDay();
@@ -53,7 +53,7 @@ class Item extends React.Component {
        this._ispravnost.value = "";
        this._prisutnost.value = "";
        this._datum.value = "";
-
+      
        var myHeaders = new Headers();
        myHeaders.append('Content-Type', 'application/json');
 

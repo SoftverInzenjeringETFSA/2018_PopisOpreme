@@ -1,7 +1,7 @@
 const 
-        { stavkaSchema, mongoose } = require('../config/config');
+        { Schema, mongoose } = require('../config/config');
 
-var stavkaSchema = mongoose.Schema({
+var StavkaShema = mongoose.Schema({
     id_broj : String,
     ispravnost : String,
     kategorija : String,
@@ -10,6 +10,6 @@ var stavkaSchema = mongoose.Schema({
     prisutnost : String
 });
 
-var Stavka = mongoose.model('Stavka', stavkaSchema);
+var Stavka = mongoose.model('Stavka', StavkaShema);
 
 module.exports = Stavka;
