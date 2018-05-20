@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Login from '../login';
 import Home from '../home';
 import Navbar from '../navbar';
+import Register from '../register';
 import NotFound from '../404';
 import {UnosProstorije, BrisanjeProstorije} from '../prostorija';
 import GenerisanjeNaljepnica from '../generisanje_naljepnica';
@@ -23,8 +24,9 @@ const EntryRouter = () => {
             <div>
                 <Navbar/>
                 <Switch>
-                    <Route exact path='/' component={Login}/>
-                    <Route exact path='/home' component={Home}/>
+                    <Route exact path='/login' component={Login}/>
+                    <Route exact path='/register' component={Register}/>
+                    <Route exact path='/' component={Home}/>
                     <Route exact path='/unosProstorije' component={UnosProstorije}/>
                     <Route exact path='/brisanjeProstorije' component={BrisanjeProstorije}/>
                     <Route exact path='/generisanjenaljepnica' component ={GenerisanjeNaljepnica} />

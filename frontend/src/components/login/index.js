@@ -26,7 +26,47 @@ class Login extends React.Component {
             [e.target.name]: e.target.value
         });
     }
+    /*addItem(e)
+   {
+       {
+           var newItem = {
+               naziv: this._naziv.value,
+               kolicina: this._kolicina.value,
+               kategorija: this._kategorija.value,
+               ispravnost: this._ispravnost.value,
+               prisutnost: this._prisutnost.value,
+               idBroj: parseInt(dan.toString() + mjesec.toString() + godina.toString() + this._kategorija.value.toString() + rand.toString()),
+               key: Date.now()
+           };
+           this.setState((prevState) => {
+               return {
+                   items: prevState.items.concat(newItem)
+               };
+           });
+       }
+       this._naziv.value = "";
+       this._kolicina.value = "";
+       this._kategorija.value = "";
+       this._ispravnost.value = "";
+       this._prisutnost.value = "";
+       this._datum.value = "";
+      
+       var myHeaders = new Headers();
+       myHeaders.append('Content-Type', 'application/json');
 
+       const options = {
+           method: 'POST',
+           headers: myHeaders,
+           body: JSON.stringify(newItem)
+       };
+       var  myRequest = new Request('http://localhost:8080/dodajstavku', options);
+       const response = fetch(myRequest);
+
+       alert("Uspješno unesena stavka");
+       console.log(this.state.items);
+
+       e.preventDefault();
+   }*/
     render(){
         return (
             <div className="container">

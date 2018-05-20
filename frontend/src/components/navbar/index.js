@@ -6,12 +6,17 @@ const Navbar = () => {
         <nav className="navbar navbar-default navbar-inverse">
                 <ul className="nav navbar-nav">
                     <li>
-                        <Link to="/">
+                        <Link to="/login">
                             Login Page
                         </Link>
                     </li>
                     <li>
-                        <Link to="/home">
+                        <Link to="/register">
+                            Register Page
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/">
                             Home Page
                         </Link>
                     </li>
