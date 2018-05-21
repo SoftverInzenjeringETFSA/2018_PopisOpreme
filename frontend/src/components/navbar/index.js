@@ -55,6 +55,11 @@ const Navbar = () => {
                             Inventura
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/help">
+                            <img height="25px" src="https://unpkg.com/@icon/font-awesome/icons/question-circle.svg" alt="help"/>
+                        </Link>
+                    </li>
                 </ul>
         </nav>
     );

@@ -11,9 +11,12 @@ class Inventura extends React.Component {
         this.state = {
             datum: new Date(),
             odabraneStavke: [],
+            sredstva: [],
             nazivSredstva: '',
         };
         this.onChange = this.onChange.bind(this);
+        this.getItems= this.getItems.bind(this);
+        this.getItems();
     }	 
     onChange(e){
         this.setState({
@@ -25,20 +28,37 @@ class Inventura extends React.Component {
 			nazivSredstva: newValue,
 		});
     }
+    getItems() {
+        var myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+        const options = {
+            method: 'GET',
+            headers: myHeaders
+        }
+        var request = new Request('http://localhost:8080/getItems', options);
+        fetch(request).then(dataWrappedByPromise => dataWrappedByPromise.json())
+        .then((res) => {
+            this.setState({
+                sredstva : res
+            });
+        });
+    }
+    createItem() {
+        var auditList = [];
+        if(this.state.sredstva) {
+            this.state.sredstva.forEach(audit => {
+                var x=audit.ItemName;
+                var y=audit.SubgroupPart;
+                auditList.push({value: x, label: x + '-' + y});
+            });
+        }
+        return auditList;
+    }
     render() {
-        const { selected } = this.state;
-        const grupe = [ {value: 'elektronika', label : 'Računarska, mrežna i elektronska oprema'},
-                    {value: 'namjestaj', label: 'Kancelarijski, učionički i laboratorijski namještaj'},
-                    {value: 'oprema', label: 'Kancelarijska, učionička i laboratorijska oprema'}];
-        const listaStavki=[
-            { value: 'Računar HP DX7400 MT E7200 160G', label: 'Računar HP DX7400 MT E7200 160G' },
-            { value: 'Kompjuter HP DX7400 MT E7200', label: 'Kompjuter HP DX7400 MT E7200' },
-            { value: 'Monitor HP L1908W', label: 'Monitor HP L1908W' },
-            { value: 'LCD Monitor HP IL1908W', label: 'LCD Monitor HP IL1908W' },
-        ];
         const daNe= [ {value: 1, label: "DA"}, {value: 0, label: 'NE'}];
         const Kom= [{value: 1, label: "KOM"}, {value: 0, label: 'KO'}];
         const status= [{value: 1, label: "Ispravno"}, {value: 0, label: 'Pokvareno'}, {value: 2, label: 'Nepoznato'}];
+        let stavke= this.createItem();
         return(
             <div>
                 <div style={{paddingLeft:5}}>
@@ -71,12 +91,13 @@ class Inventura extends React.Component {
                     <br/>
                 </div>
                 <br/><br/><br/>
-                <div className="col-md-10 col-md-offset-1" style={{height:300}}>
+                <div className="col-md-12" style={{height:300}}>
                 <br/>
                     <table className="table table-bordered table-responsive">
                     <tbody>
                         <tr style={{backgroundColor: '#E5E7E8'}}>
-                            <th className="text-center">Naziv sredstva</th>
+                            <th className="text-center">Šifra</th>
+                            <th className="text-center col-md-3">Naziv sredstva</th>
                             <th className="text-center">JMJ</th>
                             <th className="text-center">Potvrđeno prisustvo</th>
                             <th className="text-center">Potvrđen inventurni broj</th>
@@ -84,10 +105,13 @@ class Inventura extends React.Component {
                             <th className="text-center">Napomena</th>
                         </tr>
                         <tr>
-                            <th className="col-md-3"> 
+                            <th>
+                                <input type="number"/>
+                            </th>
+                            <th> 
                                 <Select
                                     name="nazivSredstva"
-                                    options={listaStavki}
+                                    options={stavke}
                                     value={this.state.nazivSredstva}
                                     ref={(ref) => { this.select = ref; }}
                                     onBlurResetsInput={false}
@@ -132,7 +156,9 @@ class Inventura extends React.Component {
                         </tbody>
                     </table>
                     <div className="col-md-10"/>
-                    <button className="btn btn-primary col-md-2"> Dodaj stavku </button>
+                    <button className="btn btn-primary col-md-2" onClick={this.dodajStavku}> Dodaj stavku </button>
+                </div>
+                <div>
                 </div>
                 <div className="col-md-10 col-md-offset-1">
                     <input type="checkbox" id="zakljuci"/>

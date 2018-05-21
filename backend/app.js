@@ -20,7 +20,6 @@ const
         stavke = require('./controllers/stavke/stavke')
 
 const categoryRoutes = require('./controllers/categories');
-app.use('/categories', categoryRoutes);
 
 app.use(stavke);
 app.use(authRoutes);
@@ -28,6 +27,7 @@ app.use(auditRoutes);
 app.use(prostorijeRoutes);
 app.use('/users', usersRoutes);
 app.use('/roles', roleRoutes);
+app.use('/categories', categoryRoutes);
 
 
 app.get('/', (req, res) => {
