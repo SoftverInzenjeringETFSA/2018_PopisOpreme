@@ -44,8 +44,10 @@ class OtpisInventurneStavke extends React.Component {
             this.setState({
               //counters: json
               listaStavki:json
+              
             });
           }).catch(err=>{console.log('Parsing error ',err)});
+          
       }
 
 
@@ -61,7 +63,7 @@ class OtpisInventurneStavke extends React.Component {
           
         })
 
-        alert('Stavka '+stavka +' Obrisana');
+        alert('Stavka '+stavka.naziv +' Obrisana');
         //obrisati iz baze
         let id=1;
         let myHeaders = new Headers();
@@ -69,10 +71,11 @@ class OtpisInventurneStavke extends React.Component {
     
         const options = {
             method: 'DELETE',
-            headers: myHeaders
+            headers: myHeaders,
+            body: JSON.stringify(stavka)
         }
     
-        var request = new Request('http://localhost:8080/delete-stavke/' + id, options);
+        var request = new Request('http://localhost:8080/delete-stavku/' + stavka.id_broj, options);
     
         fetch(request)
         .then(res => {
@@ -82,26 +85,10 @@ class OtpisInventurneStavke extends React.Component {
     }
 
     render(){
-        /*
-        this.setState(prevState=>({
-            listaStavki:[...prevState.listaStavki,'Adnan']
-        }));*/
-       //this.dobaviStavke();
+       
         const {listaStavki} = this.state;
         const {stavke_izvjestaj} = this.state;
-        /*
-        var tmpListaStavkiObjekata = [];
-        for(let i=0; i<5; i++){
-            StavkaObject.naziv="Monitor"
-            StavkaObject.inventurni_broj=123;
-            StavkaObject.ispravnosti=true;
-            StavkaObject.kategorija=3;
-            StavkaObject.prisutnosti=true;
-            tmpListaStavkiObjekata.push(StavkaObject);
-        }
-        this.setState({listaObjekataStavki:tmpListaStavkiObjekata});*/
-
-
+        console.log(this.state.listaStavki);
         return(
            <div>
                <header>
@@ -125,24 +112,23 @@ class OtpisInventurneStavke extends React.Component {
                     {
                         listaStavki.map((stavka,i) =>{
                             return (
-                                <tr key={stavka}>
+                                
+                                <tr key={stavka.id_broj}>
                                     <th>{i+1}</th>
-                                    <td>2123</td>
-                                    <td>{stavka}</td>
-                                    <td>"kategorija 3"</td>
-                                    <td>"količina 3"</td>
-                                    <td>"prisutno"</td>
-                                    <td>"ispravno"</td>
+                                    <td>{stavka.id_broj}</td>
+                                    <td>{stavka.naziv}</td>
+                                    <td>{stavka.kategorija}</td>
+                                    <td>{stavka.kolicina}</td>
+                                    <td>{stavka.prisutnost}</td>
+                                    <td>{stavka.ispravnost}</td>
                                     <td>
                                         <button onClick={(e)=>this.ObrisiInventurnuStavku(stavka)} type="button" className="btn btn-danger">
                                            Obriši
                                         </button>
                                     </td>
-
-                                </tr>
+                                </tr> 
                             )
-                            
-                    
+                              
                         })
                     }
                 </tbody>
@@ -162,12 +148,14 @@ class OtpisInventurneStavke extends React.Component {
                        {
                          stavke_izvjestaj.map((stavka,i)=>{
                              return(
-                                <tr key={stavka+" izvjestaj"}>
+                                 
+                                <tr key={stavka.id_broj+" izvjestaj"}>
                                 <th>{i+1}</th>
-                                <td>2123</td>
-                                <td>{stavka}</td>
+                                <td>{stavka.id_broj}</td>
+                                <td>{stavka.naziv}</td>
                                 <td>"Obrisano iz baze"</td>
                             </tr>
+                            
                              )
                          })
                        }

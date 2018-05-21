@@ -19,12 +19,39 @@ router.get('/get-stavke',(req, res) => {
         });
    });
 
-router.post('/delete-stavku:id',function(req,res){
+   router.delete('/delete-stavku/:id',function(req,res){
+        console.log(req.body);
+        let id =req.body.id_broj;
+        console.log(id);
+        //Stavka.findByIdAndRemove(id).exec();
+        Stavka.deleteOne({
+            id_broj: id
+        }, (err) => {
+        if(err){
+            res.status(422).json({
+                    error: err
+            });
+        }
+        else{
+                res.status(200).json({
+                    message: 'Stavka obrisana'
+                });
+            }
+        })
+   
+    });
 
-    let id =req.body.id;
-    Stavka.findByIdAndRemove(id).exec();
-    //res.redirect('/');
-});
+    router.post('/dodaj-naljepnicu',function(req,res){
+        let id =req.body.id_broj;
+    /**
+     * Naljepnica.create({
+     * id_broj:123123,
+     * tip_naljepnice:naljepnica or qrcode ako nije sa faxa..
+     * })
+     */
+      
+       
+    });
 router.post('/dodajstavku', function (req, res)
 {
     
