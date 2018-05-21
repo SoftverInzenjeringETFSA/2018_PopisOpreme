@@ -7,6 +7,7 @@ var StavkaShema = mongoose.Schema({
     kategorija : String,
     kolicina : String,
     naziv : String,
+    vlasnistvo: String,
     prisutnost : String
 });
 
