@@ -35,6 +35,7 @@ router.post('/dodajstavku', function (req, res)
     var ispravnost = req.body.ispravnost;
     var prisutnost = req.body.prisutnost;
     var idBroj = req.body.idBroj;
+    var vlasnistvo = req.body.vlasnistvo;
 
     Stavka.create({
         id_broj : idBroj,
@@ -42,6 +43,7 @@ router.post('/dodajstavku', function (req, res)
         kategorija : kategorija,
         kolicina : kolicina,
         naziv : naziv,
+        vlasnistvo: vlasnistvo,
         prisutnost : prisutnost
     }, function (err, data)
     {
