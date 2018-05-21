@@ -37,7 +37,7 @@ const Navbar = () => {
                     </li>
                     <li>
                         <Link to="/otpisinventurnestavke">
-                            Brisanje Inventurne Stavke
+                            Otpis Inventurne Stavke
                         </Link>
                     </li>
                     <li>

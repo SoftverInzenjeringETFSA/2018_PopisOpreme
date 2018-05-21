@@ -1,4 +1,5 @@
 const Stavka = require('../../models/Stavka');
+const Naljepnica = require('../../models/Naljepnica');
 const express = require('express');
 const bodyParser = require('body-parser');
 const router = express.Router();
@@ -42,16 +43,24 @@ router.get('/get-stavke',(req, res) => {
     });
 
     router.post('/dodaj-naljepnicu',function(req,res){
-        let id =req.body.id_broj;
-    /**
-     * Naljepnica.create({
-     * id_broj:123123,
-     * tip_naljepnice:naljepnica or qrcode ako nije sa faxa..
-     * })
-     */
-      
-       
+
+        Naljepnica.findOne({id_broj:req.body.id_broj},(err,result)=>{
+            if(result) return;
+            
+                let tip_naljepnice = "QRCODE";
+                if(req.body.vlasnistvo=="DA") tip_naljepnice ="BARCODE";
+                Naljepnica.create({
+                    id_broj: req.body.id_broj,
+                    tip_naljepnice: tip_naljepnice
+                },(err,data)=>{
+                    if(err) console.log(err);
+                    else res.send(data);
+                });
+            
+        })
+
     });
+
 router.post('/dodajstavku', function (req, res)
 {
     

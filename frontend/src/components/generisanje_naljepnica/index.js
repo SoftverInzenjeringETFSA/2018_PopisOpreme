@@ -71,8 +71,8 @@ class GenerisanjeNaljepnica extends React.Component {
       GenerisiNaljepnicu(stavka){
           let tmpboolean =false;
           if(stavka.vlasnistvo =="DA") tmpboolean=true;
-          console.log(tmpboolean);
-          console.log(stavka.vlasnistvo);
+          //console.log(tmpboolean);
+          //console.log(stavka.vlasnistvo);
        this.setState({
         visible:true,
         StavkaObject:stavka,

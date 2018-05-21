@@ -105,6 +105,7 @@ class OtpisInventurneStavke extends React.Component {
                     <th>Količina</th>
                     <th>Info o prisutnosti</th>
                     <th>Info o ispravnosti</th>
+                    <th>Vlasnistvo</th>
                     <th>Akcija</th>
                     </tr>
                 </thead>
@@ -121,6 +122,7 @@ class OtpisInventurneStavke extends React.Component {
                                     <td>{stavka.kolicina}</td>
                                     <td>{stavka.prisutnost}</td>
                                     <td>{stavka.ispravnost}</td>
+                                    <td>{stavka.vlasnistvo}</td>
                                     <td>
                                         <button onClick={(e)=>this.ObrisiInventurnuStavku(stavka)} type="button" className="btn btn-danger">
                                            Obriši
