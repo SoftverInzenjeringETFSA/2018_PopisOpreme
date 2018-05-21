@@ -29,6 +29,7 @@ class GenerisanjeNaljepnica extends React.Component {
                 kategorija : "",
                 kolicina : "",
                 naziv : "",
+                vlasnistvo:"",
                 prisutnost : ""
             },
             vlasnistvoFaxa:true
@@ -68,10 +69,14 @@ class GenerisanjeNaljepnica extends React.Component {
       }
 
       GenerisiNaljepnicu(stavka){
-          
+          let tmpboolean =false;
+          if(stavka.vlasnistvo =="DA") tmpboolean=true;
+          console.log(tmpboolean);
+          console.log(stavka.vlasnistvo);
        this.setState({
         visible:true,
-        StavkaObject:stavka
+        StavkaObject:stavka,
+        vlasnistvoFaxa:tmpboolean
        });
 
        //pristup bazi spasavanje id
@@ -115,6 +120,7 @@ class GenerisanjeNaljepnica extends React.Component {
                     <th>Količina</th>
                     <th>Info o prisutnosti</th>
                     <th>Info o ispravnosti</th>
+                    <th>Vlasnistvo</th>
                     <th>Akcija</th>
                     </tr>
                 </thead>
@@ -131,6 +137,7 @@ class GenerisanjeNaljepnica extends React.Component {
                                     <td>{stavka.kolicina}</td>
                                     <td>{stavka.prisutnost}</td>
                                     <td>{stavka.ispravnost}</td>
+                                    <td>{stavka.vlasnistvo}</td>
                                     <td>
                                         <button onClick={(e)=>this.GenerisiNaljepnicu(stavka)} type="button" className="btn btn-info">
                                            Generiši najepnicu
