@@ -8,7 +8,7 @@ import NotFound from '../404';
 import {UnosProstorije, BrisanjeProstorije} from '../prostorija';
 import GenerisanjeNaljepnica from '../generisanje_naljepnica';
 import OtpisInventurneStavke from '../otpis_stavke';
-
+import Help from '../help';
 import NovaInventura from '../novaInventura';
 import Inventura from '../inventura';
 import PregledKorisnika from '../pregledKorisnika';
@@ -34,6 +34,7 @@ const EntryRouter = () => {
                     <Route exact path='/novaInventura' component={NovaInventura}/>
                     <Route exact path='/inventura' component={Inventura}/>
                     <Route exact path='/categories' component={Category}/>
+                    <Route exact path='/help' component={Help}/>
                     <Route exact path='/pregledKorisnika' component={PregledKorisnika} />
                     <Route exact path='/categories/add' component={AddCategory}/>
                     <Route exact path='/dodajstavku' component={DodavanjeStavke}/>

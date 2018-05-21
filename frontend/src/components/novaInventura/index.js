@@ -7,12 +7,14 @@ class NovaInventura extends React.Component {
         super(props);
         this.state = {
             Name: '',
+            rooms: [],
             LocationID: '',
             audits: [],
-            rooms: []
+            chosenAudit: ''
         };
         this.onChange = this.onChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.otvoriInventuru = this.otvoriInventuru.bind(this);
         this.getRooms = this.getRooms.bind(this);
         this.getRooms();
         this.getAudits = this.getAudits.bind(this);
@@ -23,10 +25,28 @@ class NovaInventura extends React.Component {
             [e.target.name]: e.target.value
         });
     }
-    updateValue(newValue) {
+    updateLocationID(newValue) {
         this.setState({
             LocationID : newValue
         });
+    }
+    updateChosenAudit(newValue) {
+        this.setState({
+            chosenAudit : newValue
+        });
+    }
+    otvoriInventuru() {
+        var data= {Name: this.state.chosenAudit.value}
+        var myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+        const options = {
+            method: 'POST',
+            headers: myHeaders,
+            body: JSON.stringify(data)
+        };
+        var myRequest = new Request('http://localhost:8080/otvoriInventuru', options);
+        const response = fetch(myRequest);
+        this.props.history.push('/inventura');
     }
     handleClick () {
         var data = {
@@ -72,7 +92,7 @@ class NovaInventura extends React.Component {
         var auditList = [];
         if(this.state.audits) {
             this.state.audits.forEach(audit => {
-                var x=audit.Name;
+                var x=audit.AuditName;
                 auditList.push({value: x, label: x});
             });
         }
@@ -88,7 +108,6 @@ class NovaInventura extends React.Component {
         var request = new Request('http://localhost:8080/getAudits', options);
         fetch(request).then(dataWrappedByPromise => dataWrappedByPromise.json())
         .then((res) => {
-            console.log(JSON.stringify(res));
             this.setState({
                 audits: res
             });
@@ -96,7 +115,7 @@ class NovaInventura extends React.Component {
     }
     render() {
         let roomList = this.createRoom();
-        let auditList = this. createAudit();
+        let auditList = this.createAudit();
     return (
         <div className="container">
             <div className="page-header text-left">
@@ -122,7 +141,7 @@ class NovaInventura extends React.Component {
                         onBlurResetsInput={false}
                         onSelectResetsInput={false}
                         autoFocus
-                        onChange={this.updateValue.bind(this)}
+                        onChange={this.updateLocationID.bind(this)}
                         placeholder=""
                     /> 
                 </div>
@@ -142,19 +161,21 @@ class NovaInventura extends React.Component {
                 <div className="well well-lg" style={{paddingtop : 5}}>
                     <label className="col-md-5" >Postojeće inventure: </label>
                     <Select
-                        name="audits"
+                        name="chosenAudit"
                         options={auditList}
+                        value={this.state.chosenAudit}
                         className="col-md-6"
                         ref={(ref) => { this.select = ref; }}
                         onBlurResetsInput={false}
                         onSelectResetsInput={false}
+                        onChange={this.updateChosenAudit.bind(this)}
                         autoFocus
                         placeholder=""
                     /> 
                     <br/> <br/> <br/>
                     <div className="col-lg-12 centered">
                         <div className="col-md-9"></div>
-                        <button className="btn btn-primary col-md-2"> Odaberi
+                        <button type='submit' className="btn btn-primary col-md-2" onClick={this.otvoriInventuru}> Odaberi
                         </button>
                     </div>
                     <br/><br/> 
