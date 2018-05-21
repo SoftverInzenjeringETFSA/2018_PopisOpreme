@@ -150,7 +150,7 @@ class OtpisInventurneStavke extends React.Component {
                              return(
                                  
                                 <tr key={stavka.id_broj+" izvjestaj"}>
-                                <th>{i+1}</th>
+                                <th>{i+0+1}</th>
                                 <td>{stavka.id_broj}</td>
                                 <td>{stavka.naziv}</td>
                                 <td>"Obrisano iz baze"</td>
