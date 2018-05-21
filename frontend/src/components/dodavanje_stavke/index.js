@@ -10,6 +10,7 @@ class Item extends React.Component {
 
         };
         this.addItem = this.addItem.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
     
    
@@ -39,6 +40,7 @@ class Item extends React.Component {
                ispravnost: this._ispravnost.value,
                prisutnost: this._prisutnost.value,
                idBroj: parseInt(dan.toString() + mjesec.toString() + godina.toString() + this._kategorija.value.toString() + rand.toString()),
+               vlasnistvo: this._vlasnistvo.value,
                key: Date.now()
            };
            this.setState((prevState) => {
@@ -53,6 +55,7 @@ class Item extends React.Component {
        this._ispravnost.value = "";
        this._prisutnost.value = "";
        this._datum.value = "";
+       this._vlasnistvo = "";
       
        var myHeaders = new Headers();
        myHeaders.append('Content-Type', 'application/json');
@@ -98,6 +101,15 @@ class Item extends React.Component {
                        <option value = "6"> Stanje o vanbilansnoj evidenciji</option> 
                        <option value = "7"> Tuđa sredstva koja se u vrijeme popisa nalaze na fakultetu</option>
                        <option value = "8"> Sredstva koja se vrijeme popisa nalaze kod drugog pravnog lica</option>  
+                       </select>
+                   </div>
+               </tr>
+               <tr>
+                    <div className="form-group">
+                       <label>U vlasništvu fakulteta</label>
+                       <select className="form-control" name="vlasnistvo" ref = {(a) => this._vlasnistvo = a}>
+                       <option value = "DA">DA</option>
+                       <option value = "NE">NE</option> 
                        </select>
                    </div>
                </tr>
