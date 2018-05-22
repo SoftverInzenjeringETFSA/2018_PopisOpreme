@@ -36,8 +36,11 @@ class Container extends React.Component {
     }
 
     openEdit(id){
-        this.props.history.push({
+        let selectedCategory = this.state.categories.find(cat => cat._id === id);
 
+        this.props.history.push({
+            pathname: '/categories/add',
+            data: selectedCategory
         });
     }
 
@@ -67,7 +70,10 @@ class Container extends React.Component {
                             className="glyphicon glyphicon-minus pull-right cursor-pointer"
                             onClick={e => this.deleteCategory(cat._id)}
                         />
-                        <span className="glyphicon glyphicon-pencil pull-right" />
+                        <span
+                            className="glyphicon glyphicon-pencil pull-right cursor-pointer"
+                            onClick={e => this.openEdit(cat._id)}
+                        />
                     </div>
                 );
             });
