@@ -17,6 +17,7 @@ import Category from '../categories';
 import AddCategory from '../categories/category';
 
 import DodavanjeStavke from '../dodavanje_stavke';
+import ModifikacijaStavke from '../modifikacija_stavke';
 
 const EntryRouter = () => {
     return (
@@ -38,6 +39,7 @@ const EntryRouter = () => {
                     <Route exact path='/pregledKorisnika' component={PregledKorisnika} />
                     <Route exact path='/categories/add' component={AddCategory}/>
                     <Route exact path='/dodajstavku' component={DodavanjeStavke}/>
+                    <Route exact path='/modifikujstavku' component={ModifikacijaStavke}/>
                     <Route path='*' component={NotFound}/>
                 </Switch>
             </div>

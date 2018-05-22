@@ -1,0 +1,12 @@
+.tableItem {
+    position: center;
+    margin-top: 20px;
+    width: 80%;
+} 
+#input {
+    width: 130px;
+}
+#kategorijaId {
+    width: 130px;
+}
+
