@@ -5,7 +5,9 @@ class Container extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            categories: []
+            categories: [],
+            successMsg: undefined,
+            errorMsg: undefined
         };
 
         this.createCategoryComponents = this.createCategoryComponents.bind(this);
@@ -18,7 +20,7 @@ class Container extends React.Component {
         this.fetchAllCategories();
     }
 
-    fetchAllCategories(){
+    fetchAllCategories() {
         fetch('http://localhost:8080/categories')
             .then(res => {
                 if (res.ok) {
@@ -35,7 +37,7 @@ class Container extends React.Component {
             })
     }
 
-    openEdit(id){
+    openEdit(id) {
         let selectedCategory = this.state.categories.find(cat => cat._id === id);
 
         this.props.history.push({
@@ -44,17 +46,23 @@ class Container extends React.Component {
         });
     }
 
-    deleteCategory(id){
+    deleteCategory(id) {
         fetch(`http://localhost:8080/categories/${id}`, {
             method: 'DELETE'
         })
             .then(res => {
                 if (res.ok) {
                     this.fetchAllCategories();
+                    this.setState({
+                        successMsg: 'Category deleted.'
+                    })
                 }
             })
             .catch(err => {
                 console.log(err);
+                this.setState({
+                    errorMsg: 'Error ocurred while deleting an event.'
+                })
                 return null;
             })
     }
@@ -92,6 +100,20 @@ class Container extends React.Component {
                 <div className="row">
                     <div className="col-lg-offset-2 col-lg-4">
                         {ui}
+                    </div>
+
+                    <div className="col-lg-offset-2 col-lg-4">
+                        {this.state.errorMsg &&
+                        <div className="alert alert-danger">
+                            <strong>{this.state.errorMsg}</strong>
+                        </div>
+                        }
+
+                        {this.state.successMsg &&
+                        <div className="alert alert-success">
+                            <strong>{this.state.successMsg}</strong>
+                        </div>
+                        }
                     </div>
                 </div>
             </div>

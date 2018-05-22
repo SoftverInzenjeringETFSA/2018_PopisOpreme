@@ -20,6 +20,24 @@ const Navbar = () => {
                             Home Page
                         </Link>
                     </li>
+
+                    <li className="dropdown">
+                        <a className="dropdown-toggle" data-toggle="dropdown" href="#">Categories
+                            <span className="caret"></span></a>
+                        <ul className="dropdown-menu">
+                            <li>
+                                <Link to="/categories">
+                                    List All
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/categories/add">
+                                    Add new
+                                </Link>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li>
                         <Link to="/unosProstorije">
                             Unos prostorije
