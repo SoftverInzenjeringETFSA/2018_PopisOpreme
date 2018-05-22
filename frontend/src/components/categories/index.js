@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.css';
 
 class Container extends React.Component {
     constructor(props) {
@@ -8,12 +9,19 @@ class Container extends React.Component {
         };
 
         this.createCategoryComponents = this.createCategoryComponents.bind(this);
+        this.deleteCategory = this.deleteCategory.bind(this);
+        this.fetchAllCategories = this.fetchAllCategories.bind(this);
+        this.openEdit = this.openEdit.bind(this);
     }
 
     componentDidMount() {
+        this.fetchAllCategories();
+    }
+
+    fetchAllCategories(){
         fetch('http://localhost:8080/categories')
             .then(res => {
-                if(res.ok){
+                if (res.ok) {
                     res.json().then(json => {
                         this.setState({
                             categories: json
@@ -27,12 +35,40 @@ class Container extends React.Component {
             })
     }
 
-    createCategoryComponents(){
+    openEdit(id){
+        this.props.history.push({
+
+        });
+    }
+
+    deleteCategory(id){
+        fetch(`http://localhost:8080/categories/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => {
+                if (res.ok) {
+                    this.fetchAllCategories();
+                }
+            })
+            .catch(err => {
+                console.log(err);
+                return null;
+            })
+    }
+
+    createCategoryComponents() {
         let catUI = [];
-        if(this.state.categories) {
+        if (this.state.categories) {
             this.state.categories.forEach(cat => {
                 catUI.push(
-                    <p key={cat._id}>{'Name: ' + cat.name}</p>
+                    <div key={cat._id}>
+                        <span>{'Name: ' + cat.name}</span>
+                        <span
+                            className="glyphicon glyphicon-minus pull-right cursor-pointer"
+                            onClick={e => this.deleteCategory(cat._id)}
+                        />
+                        <span className="glyphicon glyphicon-pencil pull-right" />
+                    </div>
                 );
             });
         }
@@ -48,7 +84,7 @@ class Container extends React.Component {
                     <h1>Categories List</h1>
                 </div>
                 <div className="row">
-                    <div className="col-lg-offset-3 col-lg-6">
+                    <div className="col-lg-offset-2 col-lg-4">
                         {ui}
                     </div>
                 </div>
