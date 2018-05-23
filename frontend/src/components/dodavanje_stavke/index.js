@@ -66,7 +66,16 @@ class Item extends React.Component {
            body: JSON.stringify(newItem)
        };
        var  myRequest = new Request('http://localhost:8080/dodajstavku', options);
-       const response = fetch(myRequest);
+       const response = fetch(myRequest).then(dataWrappedByPromise => dataWrappedByPromise.json())
+       .then((res) => {
+           const data = {
+            method: 'POST',
+            headers: myHeaders,
+            body: JSON.stringify({naziv: res.naziv})
+        };
+        myRequest = new Request('http://localhost:8080/novaStavkaInventure', data);
+        const dodanaStavka= fetch(myRequest);
+       });
 
        alert("Uspješno unesena stavka");
        console.log(this.state.items);
