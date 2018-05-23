@@ -61,6 +61,39 @@ router.get('/get-stavke',(req, res) => {
 
     });
 
+    router.post('/search-stavku', function (req, res){
+    console.log(req.body);
+    console.log(req.body.naziv);
+    console.log("asda");
+    Stavka.findOne({naziv:req.body.naziv},(err,result)=>{
+        if(err){
+            res.status(500).json({
+                error: err
+            });
+        }
+        else{
+            res.status(200).json(result);
+        }
+   
+    })
+        /*
+    Stavka.findOne({naziv: req.body.naziv}, function (err, stavka){
+        if (err)
+        {
+            console.log(err);
+            res.send(err);
+        }
+        else
+        {
+            if (stavka)
+                res.status(200);
+            else res.status(204);
+            res.send(stavka);
+        }
+    })
+    */
+});
+
 router.post('/dodajstavku', function (req, res)
 {
     

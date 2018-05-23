@@ -32,16 +32,48 @@ class GenerisanjeNaljepnica extends React.Component {
                 vlasnistvo:"",
                 prisutnost : ""
             },
+            pretragaText:'',
             vlasnistvoFaxa:true
 
         }
         //let nummberImage = this.refs.canvas;
         //nummberImage.fillText("Hello World!", 10, 50);
         this.myRef = React.createRef();
-
+        this.inputPretraga=this.inputPretraga.bind(this);
+        this.buttonSearchEvent=this.buttonSearchEvent.bind(this);
         this.dobaviStavke = this.dobaviStavke.bind(this);
         this.dobaviStavke();
         this.GenerisiNaljepnicu = this.GenerisiNaljepnicu.bind(this);
+    }
+
+    inputPretraga(e)
+    {
+        this.setState({
+            pretragaText: e.target.value,
+        });
+    }
+
+    buttonSearchEvent(e)
+    {
+            e.preventDefault();
+            var myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'application/json');
+        
+            const options = {
+                method: 'POST',
+                headers: myHeaders,
+                body: JSON.stringify({naziv: this.state.pretragaText})
+            }
+        
+            var request = new Request('http://localhost:8080/search-stavku', options);
+    
+            fetch(request)
+              .then(res => res.json())
+              .then(json => {
+                  console.log(json);
+                  if(json!=null) this.setState({listaStavki:[json]});
+                  else alert("FAIL");
+              }).catch(err=>{console.log('Parsing error ',err)});
     }
 
     dobaviStavke() {
@@ -110,6 +142,27 @@ class GenerisanjeNaljepnica extends React.Component {
                <h2 className="text-center">Generisanje Naljepnice</h2>
                </header>
                <div className="container">
+
+               <table className="table">
+                <thead>
+                    <tr>
+                    <th> 
+                        <label>Pretraga</label>
+                        <input className="form-control" name="ImeStavke" placeholder={'naziv stavke'} onChange={this.inputPretraga}/>
+                    </th>
+                    <th>
+                    <button
+                           className="btn btn-info"
+                            type="submit"
+                             onClick={this.buttonSearchEvent}>
+                                  Pretraži
+                    </button>
+                    </th>
+                    
+                    </tr>
+                </thead>
+                </table>
+
                <table className="table">
                 <thead>
                     <tr>
