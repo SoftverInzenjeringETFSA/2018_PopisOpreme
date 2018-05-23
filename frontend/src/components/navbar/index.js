@@ -1,17 +1,23 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
+
 const Navbar = () => {
     return (
         <nav className="navbar navbar-default navbar-inverse">
                 <ul className="nav navbar-nav">
                     <li>
-                        <Link to="/">
+                        <Link to="/login">
                             Login Page
                         </Link>
                     </li>
                     <li>
-                        <Link to="/home">
+                        <Link to="/register">
+                            Register Page
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/">
                             Home Page
                         </Link>
                     </li>
@@ -35,11 +41,23 @@ const Navbar = () => {
                             Brisanje Inventurne Stavke
                         </Link>
                     </li>
-                    <li>
-                        <Link to="/dodajstavku">
-                            Dodavanje Inventurne Stavke
-                        </Link>
+                    <li className="dropdown">
+                        <a className="dropdown-toggle" data-toggle="dropdown" href="#">Stavke
+                            <span className="caret"></span></a>
+                        <ul className="dropdown-menu">
+                            <li>
+                                <Link to="/dodajstavku">
+                                    Dodaj novu stavku
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/modifikujstavku">
+                                    Modifikuj stavku
+                                </Link>
+                            </li>
+                        </ul>
                     </li>
+
                     <li>
                         <Link to="/novaInventura">
                             Nova inventura
@@ -48,6 +66,11 @@ const Navbar = () => {
                     <li>
                         <Link to="/inventura">
                             Inventura
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/help">
+                            <img height="25px" src="https://unpkg.com/@icon/font-awesome/icons/question-circle.svg" alt="help"/>
                         </Link>
                     </li>
                 </ul>
