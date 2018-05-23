@@ -58,23 +58,52 @@ class BrisanjeProstorije extends React.Component
             return r !== room;
         });
 
-        this.setState({
-            roomList: newRoomList,
-        });
+        var myHeaders1 = new Headers();
+        myHeaders1.append('Content-Type', 'application/json');
 
-        var myHeaders = new Headers();
-        myHeaders.append('Content-Type', 'application/json');
-
-        const options = {
-            method: 'DELETE',
-            headers: myHeaders,
-            body: JSON.stringify(room),
+        const options1 = {
+            headers: myHeaders1,
         };
 
-        var myRequest = new Request('http://localhost:8080/deleteRoom', options);
-        const response = fetch(myRequest);
-        alert('Uspjesno obrisana prostorija');
+        fetch('http://localhost:8080/getAudits', options1).then(function (res)
+        {
+            return res.json();
+        }).then((res) =>
+        {
+            console.log(res);
+            var tempRoomName;
+            res.forEach(function (audit)
+            {
+                if (audit.LocationID === room.roomName)
+                {
+                    tempRoomName = room.roomName;
+                }
+            });
+            if (tempRoomName !== undefined)
+            {
+                alert('Prostorija ima vezane stavke, ne moze se obrisati');
+            }
+            else
+            {
+                console.log(newRoomList);
+                this.setState({
+                    roomList: newRoomList,
+                });
 
+                var myHeaders = new Headers();
+                myHeaders.append('Content-Type', 'application/json');
+
+                const options = {
+                    method: 'DELETE',
+                    headers: myHeaders,
+                    body: JSON.stringify(room),
+                };
+
+                var myRequest = new Request('http://localhost:8080/deleteRoom', options);
+                const response = fetch(myRequest);
+                alert('Uspjesno obrisana prostorija');
+            }
+        });
     }
 
     handleListAllRooms(e)

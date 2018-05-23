@@ -6,6 +6,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
 
 const Room = require('../../models/Room');
+const Audit = require('../../models/Audit');
 
 router.post('/addRoom', function (req, res)
 {
@@ -134,17 +135,60 @@ router.delete('/deleteRoom', function (req, res)
             else
             {
                 parent = room.parentRoomName;
-                Room.deleteOne({
-                    roomName: roomName
-                }, function (err)
+
+                console.log(room.roomName);
+                Audit.findOne({
+                    LocationID: room.roomName,
+                }, function (err, audit)
                 {
+                    console.log(audit);
                     if (err)
                     {
                         console.log(err);
                         res.send(err);
                     }
-                    console.log('Uspjesno obrisana prostorija');
-                    res.send('Uspjesno obrisana prostorija ' +  roomName + '. Parent prostorija je ' + parent + '.');
+                    else
+                    {
+                        if (!audit)
+                        {
+                            Room.deleteOne({
+                                roomName: roomName
+                            }, function (err)
+                            {
+                                if (err)
+                                {
+                                    console.log(err);
+                                    res.send(err);
+                                }
+                                console.log('Uspjesno obrisana prostorija');
+                                res.send('Uspjesno obrisana prostorija ' + roomName + '. Parent prostorija je ' + parent + '.');
+                            });
+                        }
+                        else
+                        {
+                            if (room.roomName === audit.LocationID)
+                            {
+                                console.log('Prostorija ima vezane stavke, ne moze se obrisati');
+                                res.send('Prostorija ima vezane stavke, ne moze se obrisati');
+                            }
+                            else
+                            {
+                                Room.deleteOne({
+                                    roomName: roomName
+                                }, function (err)
+                                {
+                                    if (err)
+                                    {
+                                        console.log(err);
+                                        res.send(err);
+                                    }
+                                    console.log('Uspjesno obrisana prostorija');
+                                    res.send('Uspjesno obrisana prostorija ' + roomName + '. Parent prostorija je ' + parent + '.');
+                                });
+                            }
+                        }
+
+                    }
                 });
             }
         }
