@@ -85,6 +85,35 @@ router.post('/modifikujstavku', function(req, res)
         }   
     });
 });
+router.post('/modifikujstavku', function(req, res)
+{
+    let itemId = req.body.id_broj;
+ 
+    Stavka.update(
+        {"id_broj": itemId},
+        { $set: {
+            'naziv': req.body.naziv,
+            'kolicina': req.body.kolicina,
+            'kategorija': req.body.kategorija,
+            'ispravnost': req.body.ispravnost,
+            'prisutnost' : req.body.prisutnost,
+            'vlasnistvo': req.body.vlasnistvo,
+            'id_broj': req.body.id_broj,
+            }
+        },  (err, data) => {
+        if(err){
+            res.status(422).json({
+                error: err
+            });
+        }
+        else{
+            res.status(200).json({
+                message: 'Item successfully updated.',
+                data: data
+            });
+        }
+    });
+});
 router.post('/dodajstavku', function (req, res)
 {
     

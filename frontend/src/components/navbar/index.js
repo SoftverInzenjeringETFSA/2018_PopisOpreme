@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import Login from '../login';
 
+
 const Navbar = () => {
     return (
         <nav className="navbar navbar-default navbar-inverse">
@@ -41,11 +42,26 @@ const Navbar = () => {
                             Brisanje Inventurne Stavke
                         </Link>
                     </li>
+                    <li className="dropdown">
+                        <a className="dropdown-toggle" data-toggle="dropdown" href="#">Stavke
+                            <span className="caret"></span></a>
+                        <ul className="dropdown-menu">
+                            <li>
+                                <Link to="/dodajstavku">
+                                    Dodaj novu stavku
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/modifikujstavku">
+                                    Modifikuj stavku
+                                </Link>
+                            </li>
+                        </ul>
                     <li>
                         <Link to="/dodajstavku">
                             Dodavanje Inventurne Stavke
                         </Link>
-                    </li> 
+                    </li>
                     <li>
                         <Link to="/modifikujstavku">
                            Modifikacija Inventurne Stavke
