@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="common.css"/>
+    <link rel="stylesheet" type="text/css" href="fonts/font.css"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div>
+    <h1 class="fontsforweb_fontid_81 naziv">POPIS OPREME</h1>
+    <div class="nav">
+        <ul class="menu" id="menu">
+            <li>Početna</li>
+            <li>Lista Stavki</li>
+            <li>Nova Stavka</li>
+            <li>Logout</li>
+        </ul>
+    </div>
+    <div class="podstranice">
+
+        <div class="okvir">
+
+            <div class="okvir_formi">
+
+            <div class="forma">
+
+                <h1 class="fontsforweb_fontid_24027">LISTA STAVKI</h1>
+
+                <div class="lista">
+
+                    <div class="pretraga">
+                        <input id="sfield" type="text"/>
+                        <button id="search">Pretraži</button>
+                    </div>
+
+                    <div class="tabela">
+                    <table>
+                        <tr>
+                            <th>Redni broj</th>
+                            <th>Inventurni broj</th>
+                            <th>Naziv</th>
+                            <th>Kategorija</th>
+                            <th>Kolicina</th>
+                            <th>Ispravnost</th>
+                            <th>Prisutnost</th>
+                            <th>Otpiši</th>
+                            <th>Generisi naljepnicu</th>
+                            <th>Uredi</th>
+                            <th>Obriši</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Random inventurni broj</td>
+                            <td>Random naziv</td>
+                            <td>Random kategorija</td>
+                            <td>Random kolicina</td>
+                            <td>Random ispravnost</td>
+                            <td>Random prisutnost</td>
+                            <td><img src="icons/round-delete-button.svg" height="20" width="20"/></td>
+                            <td><img src="icons/price-tag.svg" height="20" width="20"/></td>
+                            <td><img src="icons/pencil-edit-button.svg" height="20" width="20"/></td>
+                            <td><img src="icons/garbage.svg" height="20" width="20"/></td>
+                        </tr>
+                    </table>
+                    </div>
+                </div>
+            </div>
+
+                <div class="forma">
+                    <h1 class="fontsforweb_fontid_24027">NOVA STAVKA</h1>
+                    <form class="form">
+                        <label>Naziv</label>
+                        <input type="text"/>
+                        <label>Kategorija</label>
+                        <select></select>
+                        <label>Količina</label>
+                        <input type="number"/>
+                        <div>
+                            <input class="box" type="checkbox"/>
+                            <label>Ispravna</label>
+                        </div>
+                        <div>
+                            <input class="box" type="checkbox"/>
+                            <label>Prisutna</label>
+                        </div>
+                        <button>Kreiraj</button>
+                    </form>
+                </div>
+
+                <div class="forma">
+                    <h1 class="fontsforweb_fontid_24027">IZMJENA STAVKE</h1>
+                    <form class="form">
+                        <label>Naziv</label>
+                        <input type="text"/>
+                        <label>Kategorija</label>
+                        <select></select>
+                        <label>Količina</label>
+                        <input type="number"/>
+                        <div>
+                            <input class="box" type="checkbox"/>
+                            <label>Ispravna</label>
+                        </div>
+                        <div>
+                            <input class="box" type="checkbox"/>
+                            <label>Prisutna</label>
+                        </div>
+                        <button>Sačuvaj</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

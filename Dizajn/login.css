@@ -1,0 +1,83 @@
+.okvir {
+
+    max-width: 700px;
+    margin: auto;
+    height: 1000px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.okvir_formi{
+
+    margin: auto;
+    display: block;
+    width: 100%;
+}
+
+.forma {
+
+    background-color: #1D7864;
+    border: 5px solid #F1F0CC;
+    display: block;
+}
+
+.login {
+
+    display: grid;
+    padding: 50px;
+}
+
+input, select {
+
+    margin: 10px 0px;
+    padding: 3px;
+    font-size: 15pt;
+    border: none;
+    background-color: #F1F0CC;
+    font-family: sans-serif;
+}
+
+label, h1{
+
+    font-size: 15pt;
+    color: #3F0D12;
+    font-family: sans-serif;
+}
+
+h1 {
+
+    font-size: 35pt;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+button {
+
+    border: 2px solid #F1F0CC;
+    background-color: #3F0D12;
+    margin-top: 15px;
+    font-size: 15pt;
+    font-weight: bold;
+    color: #F1F0CC;
+    padding: 7px 5px;
+    font-family: sans-serif;
+}
+
+@media (max-width: 700px ){
+
+    .podstranice {
+
+        padding: 0px;
+    }
+
+    .login {
+
+        padding: 25px;
+    }
+
+    .okvir {
+
+        height: 800px;
+    }
+}

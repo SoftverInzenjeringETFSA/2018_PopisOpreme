@@ -1,0 +1,27 @@
+@font-face {
+	font-family: 'CONEI';
+	src: url('CONEI.eot');
+	src: local('CONEI'), url('CONEI.woff') format('woff'), url('CONEI.ttf') format('truetype');
+}
+.fontsforweb_fontid_24027 {
+	font-family: 'CONEI' !important;
+}
+
+@font-face {
+	font-family: 'gyrose';
+	src: url('./gyrose.eot');
+	src: local('gyrose'), url('./gyrose.woff') format('woff'), url('./gyrose.ttf') format('truetype');
+}
+.fontsforweb_fontid_81 {
+	font-family: 'gyrose' !important;
+}
+
+/*BOJE
+#A71D31
+D5BF86
+#F4C095
+#EE2E31
+#679289
+8D775F
+#1D7874
+ */
