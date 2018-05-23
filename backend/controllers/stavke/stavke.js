@@ -76,22 +76,7 @@ router.get('/get-stavke',(req, res) => {
         }
    
     })
-        /*
-    Stavka.findOne({naziv: req.body.naziv}, function (err, stavka){
-        if (err)
-        {
-            console.log(err);
-            res.send(err);
-        }
-        else
-        {
-            if (stavka)
-                res.status(200);
-            else res.status(204);
-            res.send(stavka);
-        }
-    })
-    */
+     
 });
 
 router.post('/dodajstavku', function (req, res)
