@@ -67,47 +67,63 @@ class ModifikacijaStavke extends React.Component
     
     
     onClickSave(e) {
-        var newItem = {
-            naziv: this._naziv.value,
-            kolicina: this._kolicina.value,
-            kategorija: this._kategorija.value,
-            ispravnost: this._ispravnost.value,
-            prisutnost: this._prisutnost.value,
-            vlasnistvo: this._vlasnistvo.value,
-            id_broj: this._idBroj.value,
-       
-        };
-        var stavkaObjekat = [];
 
-        for(let i = 0; i < 6; i++)
+        if(this._naziv.value.length === 0 || this._kategorija.value.length === 0 || this._kolicina.value.length === 0
+            || this._vlasnistvo.value.length === 0 || this._ispravnost.value.length === 0 || this._prisutnost.value.length === 0)
         {
-          
-            if(newItem.id_broj === this.state.listaStavki[i].id_broj)
+            alert("Sva polja moraju biti popunjena");
+        }
+        else
+        {
+            var regex = new RegExp('(^([0-9])+([0-9]|\s|([0-9]+\s))+)'); // ako počinje brojem i ako sadrži samo brojeve i razmake onda nije ispravan naziv
+            if(regex.test(this._naziv.value))
             {
-                stavkaObjekat.push(newItem);  
+                alert("Naziv nije ispravan.");
             }
             else
             {
-                stavkaObjekat.push(this.state.listaStavki[i]);
+                var newItem = {
+                naziv: this._naziv.value,
+                kolicina: this._kolicina.value,
+                kategorija: this._kategorija.value,
+                ispravnost: this._ispravnost.value,
+                prisutnost: this._prisutnost.value,
+                vlasnistvo: this._vlasnistvo.value,
+                id_broj: this._idBroj.value,
+        
+                };
+                var stavkaObjekat = [];
+
+                for(let i = 0; i < 6; i++)
+                {
+                
+                    if(newItem.id_broj === this.state.listaStavki[i].id_broj)
+                    {
+                        stavkaObjekat.push(newItem);  
+                    }
+                    else
+                    {
+                        stavkaObjekat.push(this.state.listaStavki[i]);
+                    }
+                }
+                this.setState({ 
+                    childVisible: !this.state.childVisible,
+                    listaStavki: stavkaObjekat
+                });
+                var myHeaders = new Headers();
+                myHeaders.append('Content-Type', 'application/json');
+        
+                const options = {
+                    method: 'POST',
+                    headers: myHeaders,
+                    body: JSON.stringify(newItem)
+                };
+                var  myRequest = new Request('http://localhost:8080/modifikujstavku', options);
+                const response = fetch(myRequest);
+        
+                alert("Uspješno modifikovana stavka");
             }
         }
-        this.setState({ 
-            childVisible: !this.state.childVisible,
-            listaStavki: stavkaObjekat
-        });
-        var myHeaders = new Headers();
-        myHeaders.append('Content-Type', 'application/json');
- 
-        const options = {
-            method: 'POST',
-            headers: myHeaders,
-            body: JSON.stringify(newItem)
-        };
-        var  myRequest = new Request('http://localhost:8080/modifikujstavku', options);
-        const response = fetch(myRequest);
- 
-        alert("Uspješno modifikovana stavka");
-     
         e.preventDefault();
         
     }
