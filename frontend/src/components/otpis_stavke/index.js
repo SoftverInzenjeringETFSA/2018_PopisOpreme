@@ -17,13 +17,45 @@ class OtpisInventurneStavke extends React.Component {
         this.state = {
             listaStavki : ['stolica','lemilica','monitor'],
             lista_inventurnih_brojeva:[],
-
+            pretragaText:'',
             stavke_izvjestaj: []
         }
 
         this.dobaviStavke = this.dobaviStavke.bind(this);
+        this.inputPretraga=this.inputPretraga.bind(this);
+        this.buttonSearchEvent=this.buttonSearchEvent.bind(this);
         this.ObrisiInventurnuStavku = this.ObrisiInventurnuStavku.bind(this);
         this.dobaviStavke();
+    }
+
+    inputPretraga(e)
+    {
+        this.setState({
+            pretragaText: e.target.value,
+        });
+    }
+
+    buttonSearchEvent(e)
+    {
+            e.preventDefault();
+            var myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'application/json');
+        
+            const options = {
+                method: 'POST',
+                headers: myHeaders,
+                body: JSON.stringify({naziv: this.state.pretragaText})
+            }
+        
+            var request = new Request('http://localhost:8080/search-stavku', options);
+    
+            fetch(request)
+              .then(res => res.json())
+              .then(json => {
+                  console.log(json);
+                  if(json!=null) this.setState({listaStavki:[json]});
+                  else alert("FAIL");
+              }).catch(err=>{console.log('Parsing error ',err)});
     }
 
     dobaviStavke() {
@@ -90,11 +122,37 @@ class OtpisInventurneStavke extends React.Component {
         const {stavke_izvjestaj} = this.state;
         console.log(this.state.listaStavki);
         return(
-           <div>
+           <div >
                <header>
                <h2 className="text-center">Otpis Inventurne Stavke</h2>
                </header>
+              
+              
                <div className="container">
+               <div>
+               <table className="table">
+                <thead>
+                    <tr>
+                    <th> 
+                        <label>Pretraga</label>
+                        <input className="form-control" name="ImeStavke" placeholder={'naziv stavke'} onChange={this.inputPretraga}/>
+                    </th>
+                    <th>
+                    <button
+                           className="btn btn-info"
+                            type="submit"
+                             onClick={this.buttonSearchEvent}>
+                                  Pretraži
+                    </button>
+                    </th>
+                    
+                    </tr>
+                </thead>
+                </table>
+                   
+                  
+                </div>
+
                <table className="table">
                 <thead>
                     <tr>
@@ -105,6 +163,7 @@ class OtpisInventurneStavke extends React.Component {
                     <th>Količina</th>
                     <th>Info o prisutnosti</th>
                     <th>Info o ispravnosti</th>
+                    <th>Vlasnistvo</th>
                     <th>Akcija</th>
                     </tr>
                 </thead>
@@ -121,6 +180,7 @@ class OtpisInventurneStavke extends React.Component {
                                     <td>{stavka.kolicina}</td>
                                     <td>{stavka.prisutnost}</td>
                                     <td>{stavka.ispravnost}</td>
+                                    <td>{stavka.vlasnistvo}</td>
                                     <td>
                                         <button onClick={(e)=>this.ObrisiInventurnuStavku(stavka)} type="button" className="btn btn-danger">
                                            Obriši
