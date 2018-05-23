@@ -1,24 +1,17 @@
 import React from 'react';
 import {loginUser} from "./actions";
+import { Route, Redirect } from 'react-router';
 
 class Login extends React.Component {
     constructor(props){
         super(props);
 
         this.state = {
-            username: '',
-            password: ''
+            //username: '',
+            //password: '',
+            users: []
         };
-
-        this.onChange = this.onChange.bind(this);
-        this.onLoginClick = this.onLoginClick.bind(this);
-    }
-
-    onLoginClick(e){
-        e.preventDefault();
-        if(loginUser(this.state)){
-            this.props.history.push('/home');
-        }
+        this.loginUser = this.loginUser.bind(this);
     }
 
     onChange(e){
@@ -26,30 +19,22 @@ class Login extends React.Component {
             [e.target.name]: e.target.value
         });
     }
-    /*addItem(e)
+    loginUser(e)
    {
        {
-           var newItem = {
-               naziv: this._naziv.value,
-               kolicina: this._kolicina.value,
-               kategorija: this._kategorija.value,
-               ispravnost: this._ispravnost.value,
-               prisutnost: this._prisutnost.value,
-               idBroj: parseInt(dan.toString() + mjesec.toString() + godina.toString() + this._kategorija.value.toString() + rand.toString()),
-               key: Date.now()
+        if(this._username.value !== "" && this._password.value !== "")
+           var User = {
+               username: this._username.value,
+               password: this._password.value
            };
            this.setState((prevState) => {
                return {
-                   items: prevState.items.concat(newItem)
+                   users: prevState.users.concat(User)
                };
            });
        }
-       this._naziv.value = "";
-       this._kolicina.value = "";
-       this._kategorija.value = "";
-       this._ispravnost.value = "";
-       this._prisutnost.value = "";
-       this._datum.value = "";
+       this._username.value = "";
+       this._password.value = "";
       
        var myHeaders = new Headers();
        myHeaders.append('Content-Type', 'application/json');
@@ -57,33 +42,42 @@ class Login extends React.Component {
        const options = {
            method: 'POST',
            headers: myHeaders,
-           body: JSON.stringify(newItem)
+           body: JSON.stringify(User)
        };
-       var  myRequest = new Request('http://localhost:8080/dodajstavku', options);
-       const response = fetch(myRequest);
-
-       alert("Uspješno unesena stavka");
-       console.log(this.state.items);
+       var  myRequest = new Request('http://localhost:8080/login', options);
+       fetch(myRequest)
+        .then(res => {
+            if(res){
+                alert("Uspješno logovan user");
+                this.props.history.push('/register');
+            }
+            else{
+                alert("Pogresan username ili password!");
+            }
+            console.log(res);
+        });
+       
+       //console.log(this.state.items);
 
        e.preventDefault();
-   }*/
+   }
     render(){
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-lg-offset-4 col-lg-4">
-                        <form className="well" onSubmit={e => e.preventDefault()}>
+                        <form className="well" onSubmit = {this.loginUser}>
                             <div className="form-group">
                                 <label>Username</label>
-                                <input className="form-control" name="username" onChange={this.onChange}/>
+                                <input ref = {(a) => this._username = a} className="form-control" name="username" placeholder="Username.."/>
                             </div>
 
                             <div className="form-group">
                                 <label>Password</label>
-                                <input className="form-control" name="password" onChange={this.onChange}/>
+                                <input ref = {(a) => this._password = a} className="form-control" name="password" placeholder="Password.."/>
                             </div>
 
-                            <button className="btn btn-primary" onClick={this.onLoginClick}>
+                            <button type="submit" className="btn btn-primary">
                                 Login
                             </button>
                         </form>

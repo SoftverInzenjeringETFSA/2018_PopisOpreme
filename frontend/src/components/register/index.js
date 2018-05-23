@@ -93,7 +93,7 @@ class Register extends React.Component {
                                 <input ref = {(a) => this._conpassword = a} className="form-control" name="conpassword" placeholder="Confirm password.."/>
                             </div>
 
-                            <button type="submit">
+                            <button type="submit" className="btn btn-primary">
                                 Register
                             </button>
                         </form>

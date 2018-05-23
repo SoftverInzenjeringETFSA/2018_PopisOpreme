@@ -12,11 +12,19 @@ const User = require('../../models/User');
 router.post('/login',function(req,res){
    var userr = req.body.username;
    var password = req.body.password;
-   User.find({ 'username': userr }, function (err, user) {
-        if(user.password == password) res.send("Uspjesno logovan user: " + userr);
-        else res.send("Netacna username ili password");
+   var login = false;
+   User.findOne({ 'username': userr }, function (err, rez) {
+        if(rez.password == password) {
+            console.log("Usao u if");
+            login = true;
+            //res.redirect('/frontend/src/components/register/index.js')
+            res.send(login);
+        }
+        else{ 
+            console.log("Usao u else");
+        }
   });
-  console.log("LOGIN");
+  console.log("Zavrsio LOGIN");
 });
 
 //REGISTER
@@ -34,8 +42,8 @@ router.post('/register',function(req,res){
         password : pass, 
         email : em,
         firstname : fn,
-        lastname : ln
-       
+        lastname : ln,
+       isActive: false
         
     }, function (err, data)
     {
@@ -49,9 +57,10 @@ router.post('/register',function(req,res){
             res.send(data);
         }
     });
+});
 //app.listen(8000);
 //router.post('/logout',function(req,res){
-    res.redirect('home.html');
-});
+    //res.redirect('home.html');
+//});
 
 module.exports = router;

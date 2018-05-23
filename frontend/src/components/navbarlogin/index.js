@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Login from '../login';
 
 const Navbar = () => {
     return (
@@ -45,13 +44,7 @@ const Navbar = () => {
                         <Link to="/dodajstavku">
                             Dodavanje Inventurne Stavke
                         </Link>
-                    </li> 
-                    <li>
-                        <Link to="/modifikujstavku">
-                           Modifikacija Inventurne Stavke
-                        </Link>
                     </li>
-
                     <li>
                         <Link to="/novaInventura">
                             Nova inventura
@@ -60,11 +53,6 @@ const Navbar = () => {
                     <li>
                         <Link to="/inventura">
                             Inventura
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/help">
-                            <img height="25px" src="https://unpkg.com/@icon/font-awesome/icons/question-circle.svg" alt="help"/>
                         </Link>
                     </li>
                 </ul>
