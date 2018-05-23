@@ -36,17 +36,7 @@ class NovaInventura extends React.Component {
         });
     }
     otvoriInventuru() {
-        var data= {Name: this.state.chosenAudit.value}
-        var myHeaders = new Headers();
-        myHeaders.append('Content-Type', 'application/json');
-        const options = {
-            method: 'POST',
-            headers: myHeaders,
-            body: JSON.stringify(data)
-        };
-        var myRequest = new Request('http://localhost:8080/otvoriInventuru', options);
-        const response = fetch(myRequest);
-        this.props.history.push('/inventura');
+        this.props.history.push({pathname: '/inventura', state: {name: this.state.chosenAudit.value}});
     }
     handleClick () {
         var data = {
@@ -112,6 +102,10 @@ class NovaInventura extends React.Component {
                 audits: res
             });
         });
+    }
+    componentDidUpdate() {
+        this.getRooms();
+        this.getAudits();
     }
     render() {
         let roomList = this.createRoom();

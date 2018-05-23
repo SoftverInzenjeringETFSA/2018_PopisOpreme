@@ -8,8 +8,9 @@ class Help extends React.Component{
     render(){
         return (
             <div className="container">
-                <div className="jumbotron text-center">
-                    <h1>Help</h1>
+                <h1>Help</h1>
+                <div>
+                    
                 </div>
             </div>
         )

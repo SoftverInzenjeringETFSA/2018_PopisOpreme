@@ -5,7 +5,7 @@ const router = express.Router();
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 const Audit = require('../../models/Audit');
-const Item = require('../../models/Item');
+const StavkeInventure = require('../../models/StavkeInventure');
 const Room = require ('../../models/Room');
 
 router.get('/getRoom', (req, res) => {
@@ -19,7 +19,7 @@ router.get('/getRoom', (req, res) => {
 });
 
 router.get('/getAudits', (req, res) => {
-    Audit.find({}, {AuditName:1, LocationID:1}, (err, data) => {
+    Audit.find({Completed: false}, {AuditName:1, LocationID:1}, (err, data) => {
         if(err) {
             res.status(500);
             res.end();
@@ -29,7 +29,7 @@ router.get('/getAudits', (req, res) => {
 });
 
 router.get('/getItems', (req, res) => {
-    Item.find({}, {ItemName:1, SubgroupPart:1}, (err, data) => {
+    StavkeInventure.find({AuditName: null}, {naziv: 1}, (err,data) => {
         if(err) {
             res.status(500);
             res.end();
@@ -59,7 +59,7 @@ router.post('/novaInventura',function(req,res){
 
  router.post('/otvoriInventuru',function(req,res){
     var name = req.body.Name;
-    AuditItem.findAll({
+    StavkeInventure.find({
         AuditName: name,
     }, function (err, data)
     {
@@ -69,17 +69,42 @@ router.post('/novaInventura',function(req,res){
         }
         else
         {
-            console.log(data);
+            res.send(data);
         }
     });
  });
-
-router.get('/inventura', function(req,res) {
-    Item.create({AuditItemID: 16667, 
-        ItemName: 'Računar HP DX7400 MT E7200 160G', Group: 'Računarska, mrežna i elektronska oprema', 
-        Subgroup: 'Računarska oprema', SubgroupPart: 'Centralna jedinica'}, function(err) {
+router.post('/novaStavkaInventure', function(req,res) {
+    StavkeInventure.create({AuditName: null, sifra: null, 
+        naziv: req.body.naziv, jmj: 'KOM', 
+        prisutnost: 'DA',potvrdjenInventurniBroj : 'DA', status: 'Ispravno', napomena: ''}, function(err, data) {
             if (err) console.log(err);
+            else res.send(data);
         });
-})
+});
 
+router.post('/updateStavkaInventure', function(req,res) {
+    StavkeInventure.findOneAndUpdate({naziv: req.body.naziv, AuditName: null}, {AuditName: req.body.AuditName, sifra: req.body.sifra, 
+        naziv: req.body.naziv, jmj: req.body.jmj, 
+        prisutnost: req.body.prisutnost, potvrdjenInventurniBroj : req.body.potvrdjenInventurniBroj, 
+        status: req.body.status, napomena: req.body.napomena}, function(err, data) {
+            if (err) console.log(err);
+            else {
+                console.log(data);
+                res.send(data);
+            }
+        });
+});
+
+router.post('/zavrsiInventuru', function(req,res) {
+    Audit.update({AuditName: req.body.AuditName}, {modifiedAt: Date.now(), User: req.body.User, Team: req.body.Team,
+    LocationID: req.body.LocationID, RoomDescription: req.body.RoomDescription, OrganizationalUnit: req.body.OrganizationalUnit,
+    Completed: req.body.Completed}, 
+    function(err, data) {
+            if (err) console.log(err);
+            else {
+                console.log(data);
+                res.send(data);
+            }
+        });
+});
  module.exports = router;

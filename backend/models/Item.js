@@ -7,6 +7,6 @@ var ItemSchema = mongoose.Schema({
     SubgroupPart: String,
 });
 
-var Item = mongoose.model('AuditItem', ItemSchema);
+var Item = mongoose.model('Item', ItemSchema);
 
 module.exports = Item;
