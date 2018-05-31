@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import html2canvas from 'html2canvas';
+import jspdf from 'jspdf';
 //import TextToImage from 'reactjs-text-to-image';
 var QRCode = require('qrcode.react');
 var Barcode = require('react-barcode');
@@ -45,6 +47,8 @@ class GenerisanjeNaljepnica extends React.Component {
         this.dobaviStavke();
         this.GenerisiNaljepnicu = this.GenerisiNaljepnicu.bind(this);
     }
+	
+	
 
     inputPretraga(e)
     {
@@ -52,6 +56,9 @@ class GenerisanjeNaljepnica extends React.Component {
             pretragaText: e.target.value,
         });
     }
+	
+	
+				
 
     buttonSearchEvent(e)
     {
@@ -110,6 +117,11 @@ class GenerisanjeNaljepnica extends React.Component {
         StavkaObject:stavka,
         vlasnistvoFaxa:tmpboolean
        });
+	  
+	   
+	   
+	   
+	   
 
        //pristup bazi spasavanje id
        //this.state.StavkaObject.id_broj.. spasis u bazu za naljepnice..
@@ -138,7 +150,8 @@ class GenerisanjeNaljepnica extends React.Component {
         //this.GenerisiNaljepnicu();
         return(
            <div>
-               <header>
+		   
+               <header id="test">
                <h2 className="text-center">Generisanje Naljepnice</h2>
                </header>
                <div className="container">
@@ -207,7 +220,7 @@ class GenerisanjeNaljepnica extends React.Component {
                 {this.state.visible ? <Naljepnica vrijednost={this.state.StavkaObject.id_broj} vlasnistvoFaxa={this.state.vlasnistvoFaxa}/>:null}
     
                </div>
-
+			
            </div>
         );
     }
@@ -219,13 +232,32 @@ class Naljepnica extends React.Component{
     constructor(props){
         super(props);
     }
-
+     
     render(){
         return(
             <div>
             <h2 className="text-center">Naljepnica </h2>
             <div className="text-center">
-            {this.props.vlasnistvoFaxa ? <Barcode value={this.props.vrijednost} />: <QRCode value={this.props.vrijednost} /> }
+			<div id="barcode">
+			<Barcode value={this.props.vrijednost} />
+			<br/>
+			</div>
+			<button  type="button" className="btn btn-info" onClick={() => {
+				
+				const input = document.getElementById('barcode');
+							html2canvas(input).then((canvas) => {
+								const imgData = canvas.toDataURL('image/png');
+								const pdf = new jspdf();
+								pdf.addImage(imgData, 'JPGE', 0, 0);
+								pdf.save("barcode.pdf");
+								
+							  });
+				
+			}}>Download barcode</button>
+			<br/>
+			<br/>
+			
+				
             </div>
         </div>
         );
